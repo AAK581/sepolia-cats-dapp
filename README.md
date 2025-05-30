@@ -1,3 +1,9 @@
+# Sepolia Cats: A Gamified Sepolia Ethereum Faucet!
+![image](https://github.com/user-attachments/assets/56af50e6-967b-4eb7-8dd8-4543809f3565)
+![image](https://github.com/user-attachments/assets/7f965537-36e0-438d-be96-eb397ec7f7b8)
+![image](https://github.com/user-attachments/assets/c373921a-775c-46e2-8c43-768e343ce523)
+
+
 # About this project
 
 ## Project Description
