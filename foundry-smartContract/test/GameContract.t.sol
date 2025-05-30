@@ -27,6 +27,7 @@ contract GameContractTest is Test {
         assertEq(address(gameContractTest).balance, 2 ether);
     }
 
+    // This tests the setting kittens funtion
     function test_setKittens() public {
         vm.prank(game);
         gameContractTest.setKittens(user, 60);
@@ -34,6 +35,7 @@ contract GameContractTest is Test {
         assertEq(testKittens, 60);
     }
 
+    // This tries to set more than the limit of 60 kittens
     function test_SetKittensMax() public {
         vm.startPrank(game);
         vm.expectRevert("Cannot add more than 60 kittens at once");
@@ -41,12 +43,14 @@ contract GameContractTest is Test {
         vm.stopPrank;
     }
 
+    // This tries to return the amount of kittens
     function test_getKittens() public{
         vm.prank(user);
         uint256 test_get = gameContractTest.getKittens();
         assertEq(test_get, gameContractTest.userKittens(user));
     }
 
+    // This tries to reward the user
     function test_rewardUser() public {
         vm.deal(owner, 5 ether);
         gameContractTest.fundContract{value: 5 ether}();
@@ -60,6 +64,7 @@ contract GameContractTest is Test {
         assertEq(user.balance, 1.2 ether);
     }
 
+    // This checks if an event emits when a user sets their kittens
     function test_KittensUpdatedEvent() public {
         vm.expectEmit(true, true, false, false, address(gameContractTest)); 
         emit GameContract.KittensUpdated(user, 40);
@@ -67,6 +72,7 @@ contract GameContractTest is Test {
         gameContractTest.setKittens(user, 40);
     }
 
+    // This checks if an event emits when a user claims a reward
     function test_UserRewardedEvent() public {
         vm.deal(owner, 5 ether);
         gameContractTest.fundContract{value: 5 ether}();
@@ -80,6 +86,7 @@ contract GameContractTest is Test {
         vm.stopPrank();
     }
 
+    // This tries to change the reward to 30 ETH
     function test_changeReward() public {
         uint256 newReward = 30 ether;
         gameContractTest.changeReward(newReward);
@@ -87,7 +94,8 @@ contract GameContractTest is Test {
         assertEq(gameContractTest.REWARD(), 30 ether);
     }
 
-function test_rewardUser_dailyLimit() public {
+    // This tests what would happen if a user tries to claim more than the allowed daily limit (4 rewards)
+    function test_rewardUser_dailyLimit() public {
         vm.deal(owner, 5 ether);
         gameContractTest.fundContract{value: 5 ether}();
 
@@ -108,11 +116,14 @@ function test_rewardUser_dailyLimit() public {
         vm.stopPrank();
     }
 
-function test_donate() public {
-    vm.deal(user, 1 ether);
-    vm.prank(user);
-    (bool success, ) = address(gameContractTest).call{value: 0.3 ether}("");
-    assertTrue(success);
-    assertEq(address(gameContractTest).balance, 0.3 ether);
-}
+    // This tests donations and the event emmitted afterwards
+    function test_donate() public {
+        vm.deal(user, 1 ether);
+        vm.prank(user);
+        vm.expectEmit(true, true, false, false, address(gameContractTest));
+        emit GameContract.DonationReceived(user, 0.3 ether);
+        (bool success, ) = address(gameContractTest).call{value: 0.3 ether}("");
+        assertTrue(success);
+        assertEq(address(gameContractTest).balance, 0.3 ether);
+    }
 }
