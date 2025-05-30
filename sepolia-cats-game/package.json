@@ -2,6 +2,7 @@
     "name": "rpg-game-sepolia-cats",
     "main": "index.html",
     "chromium-args": "--force-color-profile=srgb",
+    "chromium-args": "--enable-webg1 --ignore-gpu-blacklist",
     "window": {
         "title": "Sepolia Cats",
         "width": 816,

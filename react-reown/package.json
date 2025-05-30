@@ -20,6 +20,7 @@
     "blokkat-react-reown-wagmi-project-sepolia-cats": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
     "viem": "^2.30.5",
     "wagmi": "^2.15.4"
   },
