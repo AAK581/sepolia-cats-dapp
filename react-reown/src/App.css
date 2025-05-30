@@ -1,0 +1,216 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+html, body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow: hidden;
+}
+
+.mainDiv {
+  text-align: center;
+  background-color: blue;
+}
+
+
+.app-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+}
+
+.app-text {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.app-textEligible {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  margin-top: 1rem;
+}
+
+.app-textRequest {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  margin-top: 1rem; 
+}
+
+.app-error {
+  color: red;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.app-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.app-button:hover {
+  background-color: #1565c0;
+}
+.app-button:disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
+}
+
+.app-sepImg {
+  text-align: center;
+  position: absolute;
+  bottom: -0.1rem;
+  width: 22%;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+}
+
+.footerName {
+  left: 12.5%;
+}
+
+.footerLinks {
+  right: 15%;
+}
+
+.accessGameImg {
+  width: 4%;
+  position: absolute;
+  top: 5%;
+  left: 3%;
+  transform: scale(1);
+  transition: transform 0.3s;
+}
+
+.accessGameImg:hover {
+  transform: scale(1.2);
+}
+
+.pPlay {
+  display: inline;
+  position: absolute;
+  top: 14%;
+  left: 1%;
+}
+
+.containerDiv {
+  background-color: rgba(126, 126, 126, 0.1);
+  padding: 4.2%;
+  padding-bottom: 3%;
+  box-shadow: 0 0.2rem 0.5rem 0 rgba(0, 0, 0, .2);
+}
+
+.disclaimer{
+  font-size: 0.7rem;
+}
+
+.w3div {
+  margin: 0 35%;
+}
+
+/* Hide w3m-button until isConnected is determined */
+.connectButton {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+/* Show the button only when needed */
+.w3div {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--wui-spacing-m);
+}
+
+.w3div .connectButton[style*="display: block"] {
+  visibility: visible;
+  height: auto;
+  width: auto;
+  overflow: visible;
+}
+
+@media only screen and (max-width: 600px) {
+  .pPlay {
+    font-size: 0.6rem;
+    top: 6%;
+    left: 1%;
+  }
+  .accessGameImg {
+    width: 7%;
+    top: 3%;
+    left: 8%;
+  }
+  .containerDiv {
+    padding: 4.2%;
+    margin-top: 3rem;
+  }
+  .app-text {
+    font-size: 1rem;
+  }
+  p {
+    font-size: 0.8rem;
+  }
+  .app-sepImg {
+    bottom: -0.1rem;
+    width: 40%;
+  }
+  footer {
+    font-size: 0.8rem;
+  }
+  .footerName {
+    left: 1%;
+    width: 8rem;
+  }
+
+  .footerLinks {
+    right: 4%;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .app-textRequest {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    margin-top: 2rem; 
+  }
+
+  .app-textEligible {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    margin-top: 4rem;
+  }
+
+  .app-sepImg {
+    text-align: center;
+    position: absolute;
+    bottom: -0.1rem;
+    width: 30%;
+  }
+
+  .containerDiv {
+    padding-bottom: 4.2%;
+  }
+
+  .accessGameImg {
+    width: 4rem;
+    top: 2%;
+    left: 3%;
+  }
+
+  .pPlay {
+    font-size: 1.1rem;
+    top: 7%;
+    left: 0.6%;
+  }
+}
