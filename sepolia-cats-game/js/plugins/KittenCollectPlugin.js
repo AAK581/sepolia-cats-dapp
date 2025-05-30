@@ -16,18 +16,18 @@
     _Scene_Boot_create.call(this);
     pendingCollect = false;
     initializationAttempts = 0;
-    console.log("KittenCollectPlugin: Scene_Boot initialized");
+    //console.log("KittenCollectPlugin: Scene_Boot initialized");
   };
 
   // Collect kitten method with better error handling
   Game_System.prototype.collectKitten = function() {
     //console.log("KittenCollectPlugin: collectKitten called");
-    console.log("KittenCollectPlugin: randomKittenVar status:", {
-      window: window.BlockchainPlugin?.randomKittenVar,
-      gameSystem: this.randomKittenVar,
-      gameSystemExists: !!$gameSystem,
-      gameVariablesExists: !!$gameVariables
-    });
+    // console.log("KittenCollectPlugin: randomKittenVar status:", {
+    //   window: window.BlockchainPlugin?.randomKittenVar,
+    //   gameSystem: this.randomKittenVar,
+    //   gameSystemExists: !!$gameSystem,
+    //   gameVariablesExists: !!$gameVariables
+    // });
 
     // Ensure blockchain plugin is ready
     if (typeof window.ensureBlockchainFunctions === "function") {

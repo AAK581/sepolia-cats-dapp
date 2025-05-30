@@ -6,7 +6,6 @@ var $plugins =
 {"name":"KittenCollectPlugin","status":true,"description":"","parameters":{}},
 {"name":"titleAdjust","status":true,"description":"","parameters":{}},
 {"name":"ProximitySound","status":true,"description":"","parameters":{}},
-{"name":"TestPlugin","status":false,"description":"","parameters":{}},
 {"name":"GALV_CharacterFramesMZ","status":true,"description":"Enables map character sheets to have more frames per character.","parameters":{"fSpeedMod":"f * 0.8","fileSymbol":"%"}},
 {"name":"GALV_EventSpawnerMZ","status":true,"description":"(v.1.2) Spawn events from a specified spawn map to a desired location.","parameters":{"mId":"1"}},
 {"name":"GALV_MessageBustsMZ","status":true,"description":"(v.1.2) Displays a bust image instead of selected face image","parameters":{"bPriority":"0","bPosition":"0","bX":"0","bY":"8","xOffset":"0","fileAppend":"","mStyleBusts":"false"}},
