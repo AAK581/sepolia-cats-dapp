@@ -178,7 +178,7 @@ function AppKitProvider({ mode, setMode }) {
       <Helmet>
         <title>Sepolia Cats dApp</title>
         <meta property="og:title" content="Sepolia Cats dApp"/>
-        <meta property="og:description" content="A gamified Scroll Sepolia ETH faucet"/>
+        <meta property="og:description" content="A gamified Scroll Sepolia ETH faucet dApp"/>
         <meta property="og:image" content="sepoliaCatsCover"/>
         <meta property="og:url" content="https://blokkat-arabicblockchain-developer.vercel.app/"/>
         <meta property="og:type" content="website"/>
