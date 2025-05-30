@@ -112,7 +112,6 @@ contract GameContract is Ownable {
         dailyRewards[msg.sender] += rewardMultiple;
         uint256 newKittenCount = kittens % KITTENS_REQUIRED;
         userKittens[msg.sender] = newKittenCount;
-        totalKittens = totalKittens - kittens + newKittenCount;
 
 
         (bool success, ) = msg.sender.call{value: totalReward}("");
