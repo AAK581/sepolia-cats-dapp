@@ -22,7 +22,7 @@ const projectId = '95d3d7772ebc87055f7badf9115d9ae7';
 const metadata = {
   name: 'GameDApp',
   description: 'Sepolia Cats dApp',
-  url: 'https://rpg-game-sepolia-cats.vercel.app',
+  url: 'https://blokkat-arabicblockchain-developer.vercel.app/',
   icons: ['https://avatars.githubusercontent.com/u/179229932'],
 };
 
