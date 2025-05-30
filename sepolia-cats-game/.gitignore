@@ -1,0 +1,9 @@
+.env
+cache/
+out/
+*.exe
+*.dll
+*.pak
+*.bin
+*.dat
+vk_swiftshader_icd.json
