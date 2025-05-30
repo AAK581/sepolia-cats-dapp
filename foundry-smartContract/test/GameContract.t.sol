@@ -20,6 +20,7 @@ contract GameContractTest is Test {
         gameContractTest.setGameAddress(game);
     }
 
+    // This tests the fundContract function
     function test_fundContract() public {
         vm.deal(owner, 5 ether);
         gameContractTest.fundContract{value: 2 ether}();
@@ -35,7 +36,7 @@ contract GameContractTest is Test {
 
     function test_SetKittensMax() public {
         vm.startPrank(game);
-        vm.expectRevert("You can't set more than 60 kittens");
+        vm.expectRevert("Cannot add more than 60 kittens at once");
         gameContractTest.setKittens(user, 61);
         vm.stopPrank;
     }
