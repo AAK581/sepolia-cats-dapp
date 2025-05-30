@@ -9,7 +9,6 @@ import { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import {Helmet} from 'react-helmet-async';
 import './App.css';
 
 // Setup queryClient
@@ -174,15 +173,6 @@ function AppKitProvider({ mode, setMode }) {
         minHeight: '100vh',
       }}
     >
-
-      <Helmet>
-        <title>Sepolia Cats dApp</title>
-        <meta property="og:title" content="Sepolia Cats dApp"/>
-        <meta property="og:description" content="A gamified Scroll Sepolia ETH faucet dApp"/>
-        <meta property="og:image" content="sepoliaCatsCover"/>
-        <meta property="og:url" content="https://blokkat-arabicblockchain-developer.vercel.app/"/>
-        <meta property="og:type" content="website"/>
-      </Helmet>
 
       <a href="https://rpg-game-sepolia-cats.vercel.app/" target="_blank" rel="noopener noreferrer">
         <img src="/oiia.png" alt="accessGameImg" className="accessGameImg" />
