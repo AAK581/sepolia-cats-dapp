@@ -551,7 +551,7 @@ function AppKitProvider({ mode, setMode }) {
           </>
         )}
         <p className="app-textRequest">If you have Scroll Sepolia ETH that you don't need, please donate to this address</p>
-        <p>0xB6B9B1a2E68F4ac770D5850735D055D6a2207374</p>
+        <p>0xA45a75B3523334bf4017b0BB9D76d4E06661fba3</p>
         <b><p className="app-textEligible">Donations above 200 SETH will be eligible for advertisement!!</p></b>
         <i><p className="disclaimer">No gambling or NSFW advertisements allowed</p></i>
       </div>
