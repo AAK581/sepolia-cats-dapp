@@ -556,7 +556,7 @@ function AppKitProvider({ mode, setMode }) {
         <i><p className="disclaimer">No gambling or NSFW advertisements allowed</p></i>
       </div>
       <img className="app-sepImg" src="/sepoliaSuit1.png" useMap="#image-map" alt="Sepolia Cats Mascot" />
-      <footer className="footerName">Made by Adham Ahmed Kamel</footer>
+      <footer className="footerName">Made by AAK581</footer>
       <footer className="footerLinks">
         <a href="https://www.linkedin.com/in/adham-ahmad-3849b324b/" target="_blank" rel="noopener noreferrer">LinkedIn</a> - 
         <a href="https://github.com/AAK581" target="_blank" rel="noopener noreferrer"> Github</a>
