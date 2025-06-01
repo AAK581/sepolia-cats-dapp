@@ -16,11 +16,6 @@ const queryClient = new QueryClient();
 
 // Get projectId
 const projectId = import.meta.env.VITE_PROJECT_ID;
-console.log("VITE_PROJECT_ID:", import.meta.env.VITE_PROJECT_ID);
-
-if (!projectId) {
-  throw new Error("VITE_PROJECT_ID is not set in the environment variables");
-}
 
 // Metadata
 const metadata = {
