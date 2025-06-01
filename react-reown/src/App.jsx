@@ -15,11 +15,11 @@ import './App.css';
 const queryClient = new QueryClient();
 
 // Get projectId
-const projectId = import.meta.env.VITE_PROJECT_ID;
-console.log("VITE_PROJECT_ID:", import.meta.env.VITE_PROJECT_ID);
+const projectId = import.meta.env.REOWN_PROJECT_ID;
+console.log("REOWN_PROJECT_ID:", import.meta.env.REOWN_PROJECT_ID);
 
 if (!projectId) {
-  throw new Error("VITE_PROJECT_ID is not set in the environment variables");
+  throw new Error("REOWN_PROJECT_ID is not set in the environment variables");
 }
 
 // Metadata
