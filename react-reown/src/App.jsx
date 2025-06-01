@@ -15,7 +15,7 @@ import './App.css';
 const queryClient = new QueryClient();
 
 // Get projectId
-const projectId = import.meta.env.REOWN_PROJECT_ID;
+const projectId = process.env.REOWN_PROJECT_ID;
 
 // Metadata
 const metadata = {
