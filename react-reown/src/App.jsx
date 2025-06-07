@@ -1,5 +1,5 @@
 import { createAppKit } from '@reown/appkit/react';
-import { WagmiProvider, useReadContract, useWriteContract, useAccount } from 'wagmi';
+import { WagmiProvider, useReadContract, useWriteContract, useAccount, useNetwork } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import { scrollSepolia } from '@reown/appkit/networks';
@@ -45,7 +45,11 @@ createAppKit({
 });
 
 // Contract configuration
-const contractAddress = '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3';
+const contractAddresses = {
+  534351: '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3',
+  11155111: '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57'
+};
+//const contractAddress = '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3';
 const contractAbi = [
   {
     "type": "constructor",
@@ -54,11 +58,11 @@ const contractAbi = [
   },
   {
     "type": "receive",
-    "stateMutability": "payable"   
+    "stateMutability": "payable"
   },
   {
     "type": "function",
-    "name": "KITTENS_REQUIRED",    
+    "name": "KITTENS_REQUIRED",
     "inputs": [],
     "outputs": [
       {
@@ -283,6 +287,13 @@ const contractAbi = [
     "stateMutability": "view"
   },
   {
+    "type": "function",
+    "name": "withdrawFunds",
+    "inputs": [],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
     "type": "event",
     "name": "DonationReceived",
     "inputs": [
@@ -438,7 +449,10 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 // AppKitProvider Component
 function AppKitProvider({ mode, setMode }) {
+  const {chain} = useNetwork();
   const { address, isConnected, isConnecting } = useAccount();
+
+  const contractAddress = contractAddresses[chain?.id] || contractAddress[534351];
 
   // Get kittens from contract
   const { data: kittenCount, error: readError, isLoading } = useReadContract({

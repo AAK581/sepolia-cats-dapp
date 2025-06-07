@@ -20,6 +20,9 @@ contract GameContractTest is Test {
         gameContractTest.setGameAddress(game);
     }
 
+    // This allows the owner (a contract in this case) to receive funds from the withdrawFunds function
+    receive() external payable {}
+
     // This tests the fundContract function
     function test_fundContract() public {
         vm.deal(owner, 5 ether);
@@ -125,5 +128,14 @@ contract GameContractTest is Test {
         (bool success, ) = address(gameContractTest).call{value: 0.3 ether}("");
         assertTrue(success);
         assertEq(address(gameContractTest).balance, 0.3 ether);
+    }
+
+    // This test drains the contract's funds and directs them to the owner
+    function test_withdrawFunds() public {
+        vm.deal(address(gameContractTest), 5 ether);
+        vm.prank(owner);
+        gameContractTest.withdrawFunds();
+        assertEq(address(gameContractTest).balance, 0);
+        assertEq(address(owner).balance, 10 ether);
     }
 }

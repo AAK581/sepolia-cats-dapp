@@ -6,7 +6,7 @@ pragma solidity ^0.8.13;
 /// @notice This contract manages the faucet
 /// @dev This is where you can change the number of kittens required to collect, the import is to use the OnlyOwner modifier
 
-import "lib/openzeppelin-contracts/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract GameContract is Ownable {
     /// @notice The address of the game for gas
@@ -130,5 +130,13 @@ contract GameContract is Ownable {
     function setGameAddress(address _gameAddress) external onlyOwner {
         require(_gameAddress != address(0), "Invalid address");
         gameAddress = _gameAddress;
+    }
+
+    /// @notice Withdraws the funds of the contract to facilitate updating
+    /// @dev Only the owner can use it
+    function withdrawFunds() external onlyOwner {
+        require(address(this).balance > 0, 'The contract has 0 funds');
+        (bool success, ) = msg.sender.call{value: address(this).balance}("");
+        require(success, "Withdrawal failed");
     }
 }
