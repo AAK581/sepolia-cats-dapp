@@ -22,28 +22,37 @@ export default async function handler(req, res) {
       return res.status(405).json({ error: "Method not allowed" });
     }
 
-    const { kittens, userAddress } = req.body;
-    if (!Number.isInteger(kittens) || kittens > 60 || kittens < 0 || !ethers.isAddress(userAddress)) {
-      console.error("setKittens API: Invalid input", { kittens, userAddress });
-      return res.status(400).json({ error: "Invalid input" });
+    const { kittens, userAddress, chainId } = req.body;
+    if (!Number.isInteger(kittens) || kittens > 60 || kittens < 0 || !ethers.isAddress(userAddress) || !chainId) {
+      console.error("setKittens API: Invalid input", { kittens, userAddress, chainId });
+      return res.status(400).json({ error: "Invalid input: kittens (0-60), valid address, and chainId required" });
     }
 
-
-    const rpcUrls = {
-      534351: "https://sepolia-rpc.scroll.io", // Scroll Sepolia
-      11155111: "https://sepolia.infura.io/" // Ethereum Sepolia
+    // Dynamic RPC and contract addresses
+    const networkConfigs = {
+      534351: {
+        rpc: "https://sepolia-rpc.scroll.io",
+        contractAddress: "0xA45a75B3523334bf4017b0BB9D76d4E06661fba3"
+      },
+      11155111: {
+        rpc: "https://rpc.sepolia.org", // Example Ethereum Sepolia RPC; replace with a reliable one if needed
+        contractAddress: "0xa9C4cd6C657f5110C6966c78962D47c24D27BD57"
+      }
     };
-    const contractAddresses = {
-      534351: "0xA45a75B3523334bf4017b0BB9D76d4E06661fba3",
-      11155111: "0xa9C4cd6C657f5110C6966c78962D47c24D27BD57"
-    };
 
-    const provider = new ethers.JsonRpcProvider(rpcUrls[534351]); // Default to Scroll for now
+    const config = networkConfigs[chainId];
+    if (!config) {
+      return res.status(400).json({ error: "Unsupported chainId" });
+    }
+
+    const provider = new ethers.JsonRpcProvider(config.rpc);
     const signer = wallet.connect(provider);
     const balance = await provider.getBalance(wallet.address);
     console.log("setKittens API: Balance:", ethers.formatEther(balance), "ETH");
 
-    const contract = new ethers.Contract(contractAddresses[534351], [
+    const contract = new ethers.Contract(
+      config.contractAddress,
+      [
     {
       "type": "constructor",
       "inputs": [],
@@ -379,7 +388,8 @@ export default async function handler(req, res) {
     }
   ], signer
     );
-    console.log("setKittens API: Sending tx", { kittens, userAddress });
+    
+  console.log("setKittens API: Sending tx", { kittens, userAddress, chainId });
     const tx = await contract.setKittens(userAddress, kittens, { gasLimit: 300000 });
     const receipt = await tx.wait();
     console.log("setKittens API: Success", { txHash: tx.hash });

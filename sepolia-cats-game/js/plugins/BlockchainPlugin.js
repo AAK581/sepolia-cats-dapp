@@ -419,7 +419,7 @@
         const response = await fetch('https://rpg-game-sepolia-cats.vercel.app/api/setKittens', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ kittens: maxNewKittens, userAddress })
+          body: JSON.stringify({ kittens: maxNewKittens, userAddress, chainId: network.chainId })
         });
         const data = await response.json();
         console.log('setKittens: API Response:', data, 'Status:', response.status);
