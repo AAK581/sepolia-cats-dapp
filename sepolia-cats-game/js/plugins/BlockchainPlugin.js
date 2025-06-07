@@ -1,1 +1,559 @@
-function _0x18c2(_0x19585d,_0x4e8c26){const _0x3c5cd0=_0x3c5c();_0x18c2=function(_0x18c25c,_0x3451fb){_0x18c25c=_0x18c25c-0xb8;let _0x3f22fa=_0x3c5cd0[_0x18c25c];return _0x3f22fa;};return _0x18c2(_0x19585d,_0x4e8c26);}function _0x3c5c(){const _0x1b5712=['BlockchainPluginInitialized','userKittens','value','180405uBZWHg','317076PwaeDY','forEach','Error\x20getting\x20kittens:\x20','321eZEzwZ','_gameAddress','nonpayable','syncFromBlockchain:\x20Error:','rewardUser','json','setGameAddress','account','start','connectWallet:\x20Connected\x20to','floor','prototype','chainId','user','toLowerCase','max','Contract','\x20kittens\x20from\x20blockchain!','BrowserProvider','setKittens','totalKittens','create','changeReward','txHash','event','0xA45a75B3523334bf4017b0BB9D76d4E06661fba3','application/json','API\x20error:\x20','owner','setKittens:\x20No\x20Web3\x20provider','toString','Please\x20switch\x20to\x20Scroll\x20Sepolia\x20Testnet\x20(Chain\x20ID:\x20534351).','POST','getAddress','dailyRewards','Please\x20switch\x20to\x20Scroll\x20Sepolia\x20Testnet.','userAddress','gameAddress','Kitten\x20count\x20must\x20be\x200-60.','error','BlockchainPluginScript','Kitten\x20count\x20capped\x20at\x20','includes','transferOwnership','stringify','Only\x20contract\x20owner\x20can\x20fund\x20the\x20contract.','randomKittenVar','Funding\x20failed:\x20','DataManager','8KrIURy','initialize','syncFromBlockchain','BlockchainPlugin','statusText','uint256','getKittens:\x20Error:','setKittens:\x20randomKittenVar\x20not\x20set!','KITTENS_REQUIRED','min','ethereum','Synced\x20','KittensUpdated','message','263836tlPkOW','REWARD','address','ensureBlockchainFunctions','Error:\x20Game\x20not\x20initialized\x20properly.','DonationReceived','No\x20transaction\x20hash\x20returned','initialized','getElementById','Syncing\x20kittens\x20to\x20blockchain...','getKittens','script','amount','renounceOwnership','setValue','random','newOwner','fundContract:\x20Funded','https://rpg-game-sepolia-cats.vercel.app/api/setKittens','constructor','fundContract','5918380rLzDeT','UserRewarded','open','add','\x20to\x20stay\x20under\x2060.','syncToBlockchain','_items','openDApp','125755LfpvBH','pendingKittenCollections','request','fundContract:\x20Error:','Please\x20connect\x20wallet\x20first.','Game\x20not\x20properly\x20initialized.','70DImsdS','collectKitten','1906VJcjyX','_value','newReward','eth_requestAccounts','newValue','function','BlockchainPlugin:\x20Functions\x20attached\x20successfully:','getKittens:\x20No\x20Web3\x20provider','isInteger','call','connectWallet','\x20kittens\x20successfully!\x20Total\x20on-chain:\x20','150816HJsQVs','getSigner','Error\x20syncing\x20kittens:\x20','Wallet\x20connected:\x20','log','view','_blank'];_0x3c5c=function(){return _0x1b5712;};return _0x3c5c();}(function(_0x5e3e2a,_0x567327){const _0x35fdf6=_0x18c2;const _0x49a8ab=_0x5e3e2a();while(!![]){try{const _0x4b190a=parseInt(_0x35fdf6(0xd7))/0x1+parseInt(_0x35fdf6(0xfc))/0x2*(parseInt(_0x35fdf6(0x116))/0x3)+parseInt(_0x35fdf6(0x113))/0x4+parseInt(_0x35fdf6(0xf4))/0x5+parseInt(_0x35fdf6(0x108))/0x6*(parseInt(_0x35fdf6(0xfa))/0x7)+parseInt(_0x35fdf6(0xc9))/0x8*(parseInt(_0x35fdf6(0x112))/0x9)+-parseInt(_0x35fdf6(0xec))/0xa;if(_0x4b190a===_0x567327){break;}else{_0x49a8ab['push'](_0x49a8ab['shift']());}}catch(_0x470ce8){_0x49a8ab['push'](_0x49a8ab['shift']());}}}(_0x3c5c,0x24922));(function(){const _0x207270=_0x18c2;if(window['BlockchainPluginInitialized']||document[_0x207270(0xdf)](_0x207270(0xc0))){return;}window[_0x207270(0x10f)]=!![];const _0x2cdf85=document['createElement'](_0x207270(0xe2));_0x2cdf85['id']='BlockchainPluginScript';document['head']['appendChild'](_0x2cdf85);window[_0x207270(0xcc)]=window[_0x207270(0xcc)]||{};window['BlockchainPlugin'][_0x207270(0xc6)]=null;window['BlockchainPlugin'][_0x207270(0xf5)]=[];window[_0x207270(0xcc)][_0x207270(0xde)]=![];function _0x5214fc(){const _0x4e27fa=_0x207270;if(window[_0x4e27fa(0xcc)][_0x4e27fa(0xc6)]){return!![];}if(!$gameSystem||!$gameVariables){return![];}if($gameSystem[_0x4e27fa(0xc6)]){window[_0x4e27fa(0xcc)][_0x4e27fa(0xc6)]=$gameSystem['randomKittenVar'];return!![];}do{window[_0x4e27fa(0xcc)][_0x4e27fa(0xc6)]=Math[_0x4e27fa(0x120)](Math[_0x4e27fa(0xe6)]()*0x64)+0x1;}while([0x2,0x8,0x9,0xc,0x12,0x13,0x15,0x16,0x17,0x18,0x19][_0x4e27fa(0xc2)](window[_0x4e27fa(0xcc)]['randomKittenVar']));$gameSystem[_0x4e27fa(0xc6)]=window[_0x4e27fa(0xcc)][_0x4e27fa(0xc6)];$gameVariables[_0x4e27fa(0xe5)](window[_0x4e27fa(0xcc)]['randomKittenVar'],0x0);return!![];}window[_0x207270(0xda)]=function(){const _0x53917f=_0x207270;if(!window[_0x53917f(0xcc)][_0x53917f(0xde)]){_0x2a1890();}if(!$gameSystem||typeof $gameSystem[_0x53917f(0xe1)]!==_0x53917f(0x101)){if($gameSystem){_0x53f79b();}}if(!window[_0x53917f(0xcc)][_0x53917f(0xc6)]){_0x5214fc();}};const _0x14a44b=Game_System[_0x207270(0x121)][_0x207270(0xca)];Game_System[_0x207270(0x121)][_0x207270(0xca)]=function(){const _0x569c7e=_0x207270;_0x14a44b[_0x569c7e(0x105)](this);setTimeout(()=>{if(!_0x5214fc()){}},0x64);};const _0x2ab18a=Scene_Map[_0x207270(0x121)][_0x207270(0x11e)];Scene_Map[_0x207270(0x121)][_0x207270(0x11e)]=function(){const _0x3c0f3d=_0x207270;_0x2ab18a['call'](this);window[_0x3c0f3d(0xda)]();if($gameSystem&&window['BlockchainPlugin'][_0x3c0f3d(0xc6)]&&!$gameSystem[_0x3c0f3d(0xc6)]){$gameSystem[_0x3c0f3d(0xc6)]=window[_0x3c0f3d(0xcc)][_0x3c0f3d(0xc6)];}const _0x25b60e=window[_0x3c0f3d(0xcc)][_0x3c0f3d(0xf5)]['length'];if(_0x25b60e>0x0){window[_0x3c0f3d(0xcc)][_0x3c0f3d(0xf5)][_0x3c0f3d(0x114)](()=>{const _0x11029a=_0x3c0f3d;if($gameSystem&&typeof $gameSystem[_0x11029a(0xfb)]===_0x11029a(0x101)){$gameSystem[_0x11029a(0xfb)]();}});window[_0x3c0f3d(0xcc)][_0x3c0f3d(0xf5)]=[];}};const _0x1eeb9f=Scene_Boot[_0x207270(0x121)]['create'];Scene_Boot['prototype'][_0x207270(0x12b)]=function(){const _0x37757d=_0x207270;_0x1eeb9f[_0x37757d(0x105)](this);setTimeout(()=>{_0x2a1890();},0x64);};function _0x2a1890(){const _0x4b50ad=_0x207270;if(!window[_0x4b50ad(0xc8)]||!DataManager['isDatabaseLoaded']()||!$gameSystem||!$gameVariables){setTimeout(_0x2a1890,0x64);return![];}if(!_0x5214fc()){setTimeout(_0x2a1890,0x64);return![];}_0x53f79b();window['BlockchainPlugin'][_0x4b50ad(0xde)]=!![];return!![];}function _0x53f79b(){const _0x438697=_0x207270;if(!$gameSystem||!$gameVariables){return;}const _0x2b1df7=[{'type':_0x438697(0xea),'inputs':[],'stateMutability':'nonpayable'},{'type':'receive','stateMutability':'payable'},{'type':_0x438697(0x101),'name':_0x438697(0xd1),'inputs':[],'outputs':[{'name':'','type':'uint256','internalType':_0x438697(0xce)}],'stateMutability':_0x438697(0x10d)},{'type':_0x438697(0x101),'name':_0x438697(0xd8),'inputs':[],'outputs':[{'name':'','type':_0x438697(0xce),'internalType':'uint256'}],'stateMutability':_0x438697(0x10d)},{'type':_0x438697(0x101),'name':_0x438697(0x12c),'inputs':[{'name':_0x438697(0xfe),'type':_0x438697(0xce),'internalType':_0x438697(0xce)}],'outputs':[],'stateMutability':_0x438697(0x118)},{'type':_0x438697(0x101),'name':_0x438697(0xba),'inputs':[{'name':'','type':'address','internalType':_0x438697(0xd9)}],'outputs':[{'name':'','type':_0x438697(0xce),'internalType':'uint256'}],'stateMutability':_0x438697(0x10d)},{'type':_0x438697(0x101),'name':'fundContract','inputs':[],'outputs':[],'stateMutability':'payable'},{'type':'function','name':_0x438697(0xbd),'inputs':[],'outputs':[{'name':'','type':_0x438697(0xd9),'internalType':_0x438697(0xd9)}],'stateMutability':'view'},{'type':_0x438697(0x101),'name':'getKittens','inputs':[],'outputs':[{'name':'','type':_0x438697(0xce),'internalType':'uint256'}],'stateMutability':_0x438697(0x10d)},{'type':_0x438697(0x101),'name':'getTotalKittens','inputs':[],'outputs':[{'name':'','type':_0x438697(0xce),'internalType':_0x438697(0xce)}],'stateMutability':_0x438697(0x10d)},{'type':_0x438697(0x101),'name':'lastClaimDay','inputs':[{'name':'','type':_0x438697(0xd9),'internalType':_0x438697(0xd9)}],'outputs':[{'name':'','type':_0x438697(0xce),'internalType':'uint256'}],'stateMutability':_0x438697(0x10d)},{'type':_0x438697(0x101),'name':_0x438697(0x132),'inputs':[],'outputs':[{'name':'','type':_0x438697(0xd9),'internalType':_0x438697(0xd9)}],'stateMutability':'view'},{'type':'function','name':_0x438697(0xe4),'inputs':[],'outputs':[],'stateMutability':_0x438697(0x118)},{'type':_0x438697(0x101),'name':_0x438697(0x11a),'inputs':[],'outputs':[],'stateMutability':_0x438697(0x118)},{'type':_0x438697(0x101),'name':_0x438697(0x11c),'inputs':[{'name':_0x438697(0x117),'type':_0x438697(0xd9),'internalType':_0x438697(0xd9)}],'outputs':[],'stateMutability':_0x438697(0x118)},{'type':'function','name':_0x438697(0x129),'inputs':[{'name':_0x438697(0xbc),'type':_0x438697(0xd9),'internalType':_0x438697(0xd9)},{'name':_0x438697(0xfd),'type':'uint256','internalType':_0x438697(0xce)}],'outputs':[],'stateMutability':'nonpayable'},{'type':_0x438697(0x101),'name':_0x438697(0x12a),'inputs':[],'outputs':[{'name':'','type':_0x438697(0xce),'internalType':_0x438697(0xce)}],'stateMutability':'view'},{'type':'function','name':_0x438697(0xc3),'inputs':[{'name':_0x438697(0xe7),'type':_0x438697(0xd9),'internalType':_0x438697(0xd9)}],'outputs':[],'stateMutability':_0x438697(0x118)},{'type':_0x438697(0x101),'name':_0x438697(0x110),'inputs':[{'name':'','type':_0x438697(0xd9),'internalType':'address'}],'outputs':[{'name':'','type':_0x438697(0xce),'internalType':_0x438697(0xce)}],'stateMutability':_0x438697(0x10d)},{'type':_0x438697(0x12e),'name':_0x438697(0xdc),'inputs':[{'name':_0x438697(0x123),'type':_0x438697(0xd9),'indexed':!![],'internalType':_0x438697(0xd9)},{'name':_0x438697(0xe3),'type':'uint256','indexed':![],'internalType':_0x438697(0xce)}],'anonymous':![]},{'type':_0x438697(0x12e),'name':_0x438697(0xd5),'inputs':[{'name':_0x438697(0x123),'type':_0x438697(0xd9),'indexed':!![],'internalType':'address'},{'name':_0x438697(0x100),'type':_0x438697(0xce),'indexed':![],'internalType':_0x438697(0xce)}],'anonymous':![]},{'type':'event','name':'OwnershipTransferred','inputs':[{'name':'previousOwner','type':_0x438697(0xd9),'indexed':!![],'internalType':_0x438697(0xd9)},{'name':_0x438697(0xe7),'type':_0x438697(0xd9),'indexed':!![],'internalType':_0x438697(0xd9)}],'anonymous':![]},{'type':'event','name':_0x438697(0xed),'inputs':[{'name':'user','type':_0x438697(0xd9),'indexed':!![],'internalType':_0x438697(0xd9)},{'name':'amount','type':_0x438697(0xce),'indexed':![],'internalType':_0x438697(0xce)}],'anonymous':![]},{'type':_0x438697(0xbf),'name':'OwnableInvalidOwner','inputs':[{'name':'owner','type':_0x438697(0xd9),'internalType':_0x438697(0xd9)}]},{'type':_0x438697(0xbf),'name':'OwnableUnauthorizedAccount','inputs':[{'name':_0x438697(0x11d),'type':_0x438697(0xd9),'internalType':'address'}]}];$gameSystem[_0x438697(0xe1)]=async function(){const _0x2aead8=_0x438697;if(!window[_0x2aead8(0xd3)]){console[_0x2aead8(0xbf)](_0x2aead8(0x103));$gameMessage[_0x2aead8(0xef)](_0x2aead8(0xf8));return 0x0;}try{const _0x2da57e=new ethers[(_0x2aead8(0x128))](window[_0x2aead8(0xd3)]);const _0x206ba9=await _0x2da57e['getSigner']();const _0x5135d2=await _0x206ba9[_0x2aead8(0xb9)]();const _0x5d0757=new ethers[(_0x2aead8(0x126))](_0x2aead8(0x12f),_0x2b1df7,_0x2da57e);const _0x46c7dc=await _0x5d0757[_0x2aead8(0xe1)]({'from':_0x5135d2});const _0xaa439e=Number(_0x46c7dc);return _0xaa439e;}catch(_0xab14ca){console[_0x2aead8(0xbf)](_0x2aead8(0xcf),_0xab14ca['message']);$gameMessage[_0x2aead8(0xef)](_0x2aead8(0x115)+_0xab14ca['message']);return 0x0;}};$gameSystem['setKittens']=async function(_0x8649ab){const _0x2be3ad=_0x438697;if(!Number[_0x2be3ad(0x104)](_0x8649ab)||_0x8649ab>0x3c||_0x8649ab<0x0){console[_0x2be3ad(0xbf)]('setKittens:\x20Invalid\x20count:',_0x8649ab);$gameMessage[_0x2be3ad(0xef)](_0x2be3ad(0xbe));return![];}if(!window[_0x2be3ad(0xcc)][_0x2be3ad(0xc6)]){console['error'](_0x2be3ad(0xd0));$gameMessage[_0x2be3ad(0xef)](_0x2be3ad(0xdb));return![];}if(!window[_0x2be3ad(0xd3)]){console[_0x2be3ad(0xbf)](_0x2be3ad(0x133));$gameMessage[_0x2be3ad(0xef)](_0x2be3ad(0xf8));return![];}try{const _0x30a97a=new ethers[(_0x2be3ad(0x128))](window[_0x2be3ad(0xd3)]);const _0xc5b5e0=await _0x30a97a[_0x2be3ad(0x109)]();const _0x4bdc2d=await _0xc5b5e0['getAddress']();const _0x136999=new ethers[(_0x2be3ad(0x126))](_0x2be3ad(0x12f),_0x2b1df7,_0x30a97a);const _0x30c224=Number(await _0x136999[_0x2be3ad(0xe1)]({'from':_0x4bdc2d}));if(_0x30c224>=0x3c){$gameMessage[_0x2be3ad(0xef)]('You\x20have\x2060\x20kittens!\x20Redeem\x20rewards\x20to\x20collect\x20more.');$gameVariables[_0x2be3ad(0xe5)](window[_0x2be3ad(0xcc)][_0x2be3ad(0xc6)],0x0);return![];}const _0x5c087e=Math[_0x2be3ad(0xd2)](_0x8649ab,0x3c-_0x30c224);if(_0x5c087e<_0x8649ab){$gameMessage[_0x2be3ad(0xef)](_0x2be3ad(0xc1)+_0x5c087e+_0x2be3ad(0xf0));}$gameMessage[_0x2be3ad(0xef)](_0x2be3ad(0xe0));const _0x3a61dd=await fetch(_0x2be3ad(0xe9),{'method':_0x2be3ad(0xb8),'headers':{'Content-Type':_0x2be3ad(0x130)},'body':JSON[_0x2be3ad(0xc4)]({'kittens':_0x5c087e,'userAddress':_0x4bdc2d})});const _0x55c441=await _0x3a61dd[_0x2be3ad(0x11b)]();if(!_0x3a61dd['ok']){throw new Error(_0x2be3ad(0x131)+(_0x55c441[_0x2be3ad(0xbf)]||_0x3a61dd[_0x2be3ad(0xcd)]));}if(_0x55c441['error']){throw new Error(_0x55c441['error']);}if(!_0x55c441[_0x2be3ad(0x12d)]){throw new Error(_0x2be3ad(0xdd));}const _0x214c2f=$gameVariables[_0x2be3ad(0x111)](window[_0x2be3ad(0xcc)][_0x2be3ad(0xc6)]);const _0x4394dc=Math[_0x2be3ad(0x125)](0x0,_0x214c2f-_0x5c087e);$gameVariables[_0x2be3ad(0xe5)](window['BlockchainPlugin'][_0x2be3ad(0xc6)],_0x4394dc);$gameParty[_0x2be3ad(0xf2)][0x2]=$gameVariables[_0x2be3ad(0x111)](_0x4394dc);$gameMessage[_0x2be3ad(0xef)](_0x2be3ad(0xd4)+_0x5c087e+_0x2be3ad(0x107)+(_0x30c224+_0x5c087e));return!![];}catch(_0x90233b){$gameMessage['add'](_0x2be3ad(0x10a)+_0x90233b[_0x2be3ad(0xd6)]);return![];}};$gameSystem['connectWallet']=async function(){const _0x112a41=_0x438697;if(!window[_0x112a41(0xd3)]){$gameVariables[_0x112a41(0xe5)](0xc,0x0);$gameMessage[_0x112a41(0xef)]('No\x20Web3\x20wallet\x20detected.\x20Please\x20install\x20MetaMask.');return;}try{await window[_0x112a41(0xd3)][_0x112a41(0xf6)]({'method':_0x112a41(0xff)});const _0x5c5016=new ethers[(_0x112a41(0x128))](window[_0x112a41(0xd3)]);const _0x392d0b=await _0x5c5016['getNetwork']();if(_0x392d0b[_0x112a41(0x122)]!==0x8274fn){$gameMessage[_0x112a41(0xef)](_0x112a41(0x135));$gameVariables['setValue'](0xc,0x0);return;}const _0x4ff7e0=await _0x5c5016['getSigner']();const _0x16842c=await _0x4ff7e0[_0x112a41(0xb9)]();$gameMessage[_0x112a41(0xef)](_0x112a41(0x10b)+_0x16842c['slice'](0x0,0x6)+'...'+_0x16842c['slice'](-0x4));$gameVariables[_0x112a41(0xe5)](0xc,0x1);console['log'](_0x112a41(0x11f),_0x16842c);}catch(_0x4d18a9){console[_0x112a41(0xbf)]('connectWallet:\x20Error:',_0x4d18a9);$gameMessage[_0x112a41(0xef)]('Connection\x20failed:\x20'+_0x4d18a9[_0x112a41(0xd6)]);$gameVariables[_0x112a41(0xe5)](0xc,0x0);}};$gameSystem['fundContract']=async function(_0x3ddfe9){const _0x23e3a4=_0x438697;if(!window[_0x23e3a4(0xd3)]){$gameMessage[_0x23e3a4(0xef)](_0x23e3a4(0xf8));return;}try{const _0x49b0a3=new ethers['BrowserProvider'](window[_0x23e3a4(0xd3)]);const _0x4adc9d=await _0x49b0a3[_0x23e3a4(0x109)]();const _0x23467f=await _0x4adc9d[_0x23e3a4(0xb9)]();const _0x16230f=new ethers[(_0x23e3a4(0x126))](_0x23e3a4(0x12f),_0x2b1df7,_0x4adc9d);const _0x21d251=await _0x49b0a3['getNetwork']();if(_0x21d251['chainId']!==0x8274fn){$gameMessage[_0x23e3a4(0xef)](_0x23e3a4(0xbb));return;}const _0x4c43c2=await _0x16230f[_0x23e3a4(0x132)]();if(_0x4c43c2['toLowerCase']()!==_0x23467f[_0x23e3a4(0x124)]()){$gameMessage['add'](_0x23e3a4(0xc5));return;}const _0x4267f6=ethers['parseEther'](_0x3ddfe9[_0x23e3a4(0x134)]());const _0x49e20b=await _0x16230f[_0x23e3a4(0xeb)]({'value':_0x4267f6});$gameMessage['add']('Funding\x20contract...');await _0x49e20b['wait']();$gameMessage['add']('Successfully\x20funded\x20'+_0x3ddfe9+'\x20ETH!');console['log'](_0x23e3a4(0xe8),_0x3ddfe9,'ETH');}catch(_0x417c98){console[_0x23e3a4(0xbf)](_0x23e3a4(0xf7),_0x417c98['message']);$gameMessage[_0x23e3a4(0xef)](_0x23e3a4(0xc7)+_0x417c98['message']);}};$gameSystem[_0x438697(0xf3)]=function(){const _0x7bb40e=_0x438697;window[_0x7bb40e(0xee)]('https://blokkat-arabicblockchain-developer.vercel.app/',_0x7bb40e(0x10e));};$gameSystem['syncFromBlockchain']=async function(){const _0xf9b81=_0x438697;try{const _0x315d2c=await this[_0xf9b81(0xe1)]();if(_0x315d2c>0x0&&window[_0xf9b81(0xcc)][_0xf9b81(0xc6)]){$gameVariables[_0xf9b81(0xe5)](window[_0xf9b81(0xcc)][_0xf9b81(0xc6)],_0x315d2c);$gameMessage[_0xf9b81(0xef)](_0xf9b81(0xd4)+_0x315d2c+_0xf9b81(0x127));}}catch(_0x463bff){console[_0xf9b81(0xbf)](_0xf9b81(0x119),_0x463bff);$gameMessage[_0xf9b81(0xef)]('Failed\x20to\x20sync\x20from\x20blockchain.');}};$gameSystem[_0x438697(0xf1)]=async function(){const _0x265ffb=_0x438697;if(!window[_0x265ffb(0xcc)]['randomKittenVar']){$gameMessage[_0x265ffb(0xef)](_0x265ffb(0xf9));return;}const _0x41d9c5=$gameVariables['value'](window[_0x265ffb(0xcc)][_0x265ffb(0xc6)]);await this[_0x265ffb(0x129)](_0x41d9c5);};console[_0x438697(0x10c)](_0x438697(0x102),{'getKittens':!!$gameSystem[_0x438697(0xe1)],'setKittens':!!$gameSystem[_0x438697(0x129)],'connectWallet':!!$gameSystem[_0x438697(0x106)],'fundContract':!!$gameSystem[_0x438697(0xeb)],'openDApp':!!$gameSystem[_0x438697(0xf3)],'syncFromBlockchain':!!$gameSystem[_0x438697(0xcb)],'syncToBlockchain':!!$gameSystem['syncToBlockchain']});}}());
+(function() {
+  const scriptId = "BlockchainPluginScript";
+  if (window.BlockchainPluginInitialized || document.getElementById(scriptId)) {
+    console.log("BlockchainPlugin: Skipped duplicate initialization.");
+    return;
+  }
+  window.BlockchainPluginInitialized = true;
+  
+  const scriptTag = document.createElement("script");
+  scriptTag.id = scriptId;
+  document.head.appendChild(scriptTag);
+  
+  window.BlockchainPlugin = window.BlockchainPlugin || {};
+  window.BlockchainPlugin.randomKittenVar = null;
+  window.BlockchainPlugin.pendingKittenCollections = [];
+  window.BlockchainPlugin.initialized = false;
+
+  // Contract addresses for both networks
+  const contractAddresses = {
+    534351: '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3', // Scroll Sepolia
+    11155111: '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57' // Ethereum Sepolia
+  };
+
+  // Get contract address based on connected network
+  async function getContractAddress() {
+    if (window.ethereum) {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const network = await provider.getNetwork();
+      return contractAddresses[network.chainId] || contractAddresses[534351];
+    }
+    return contractAddresses[534351]; // Default to Scroll Sepolia
+  }
+
+  // Validate supported chain IDs
+  function isValidChain(chainId) {
+    return chainId === 534351n || chainId === 11155111n;
+  }
+
+  // Initialize kitten variable with persistence
+  function initializeKittenVar() {
+    if (window.BlockchainPlugin.randomKittenVar) {
+      console.log("BlockchainPlugin: randomKittenVar already set:", window.BlockchainPlugin.randomKittenVar);
+      return true;
+    }
+    
+    if (!$gameSystem || !$gameVariables) {
+      console.warn("BlockchainPlugin: $gameSystem or $gameVariables not ready");
+      return false;
+    }
+
+    // Check if we have a saved randomKittenVar
+    if ($gameSystem.randomKittenVar) {
+      window.BlockchainPlugin.randomKittenVar = $gameSystem.randomKittenVar;
+      console.log("BlockchainPlugin: Restored randomKittenVar from save:", window.BlockchainPlugin.randomKittenVar);
+      return true;
+    }
+
+    // Generate new random variable
+    do {
+      window.BlockchainPlugin.randomKittenVar = Math.floor(Math.random() * 100) + 1;
+    } while ([2, 8, 9, 12, 18, 19, 21, 22, 23, 24, 25].includes(window.BlockchainPlugin.randomKittenVar));
+    
+    $gameSystem.randomKittenVar = window.BlockchainPlugin.randomKittenVar;
+    $gameVariables.setValue(window.BlockchainPlugin.randomKittenVar, 0);
+    
+    console.log("BlockchainPlugin: Generated new randomKittenVar:", window.BlockchainPlugin.randomKittenVar);
+    return true;
+  }
+
+  // Ensure functions are available
+  window.ensureBlockchainFunctions = function() {
+    if (!window.BlockchainPlugin.initialized) {
+      console.log("BlockchainPlugin: Reinitializing...");
+      initializePlugin();
+    }
+    
+    if (!$gameSystem || typeof $gameSystem.getKittens !== "function") {
+      console.warn("BlockchainPlugin: Reattaching functions...");
+      if ($gameSystem) {
+        attachFunctions();
+      }
+    }
+    
+    if (!window.BlockchainPlugin.randomKittenVar) {
+      initializeKittenVar();
+    }
+  };
+
+  // Hook Game_System initialization
+  const _Game_System_initialize = Game_System.prototype.initialize;
+  Game_System.prototype.initialize = function() {
+    console.log("BlockchainPlugin: Game_System.initialize called");
+    _Game_System_initialize.call(this);
+    
+    // Ensure randomKittenVar is set
+    setTimeout(() => {
+      if (!initializeKittenVar()) {
+        console.warn("BlockchainPlugin: Failed to initialize in Game_System, will retry later");
+      }
+    }, 100);
+  };
+
+  // Hook Scene_Map start to process pending collections
+  const _Scene_Map_start = Scene_Map.prototype.start;
+  Scene_Map.prototype.start = function() {
+    _Scene_Map_start.call(this);
+    
+    // Ensure our system is ready
+    window.ensureBlockchainFunctions();
+    
+    // Restore randomKittenVar if needed
+    if ($gameSystem && window.BlockchainPlugin.randomKittenVar && !$gameSystem.randomKittenVar) {
+      $gameSystem.randomKittenVar = window.BlockchainPlugin.randomKittenVar;
+      console.log("BlockchainPlugin: Restored randomKittenVar in Scene_Map:", window.BlockchainPlugin.randomKittenVar);
+    }
+    
+    // Process pending collections
+    const pendingCount = window.BlockchainPlugin.pendingKittenCollections.length;
+    if (pendingCount > 0) {
+      console.log("BlockchainPlugin: Processing", pendingCount, "pending kitten collections");
+      window.BlockchainPlugin.pendingKittenCollections.forEach(() => {
+        if ($gameSystem && typeof $gameSystem.collectKitten === "function") {
+          $gameSystem.collectKitten();
+        }
+      });
+      window.BlockchainPlugin.pendingKittenCollections = [];
+    }
+  };
+
+  // Hook Scene_Boot
+  const _Scene_Boot_create = Scene_Boot.prototype.create;
+  Scene_Boot.prototype.create = function() {
+    console.log("BlockchainPlugin: Scene_Boot.create called");
+    _Scene_Boot_create.call(this);
+    
+    // Initialize with retry mechanism
+    setTimeout(() => {
+      initializePlugin();
+    }, 100);
+  };
+
+  function initializePlugin() {
+    if (!window.DataManager || !DataManager.isDatabaseLoaded() || !$gameSystem || !$gameVariables) {
+      console.warn("BlockchainPlugin: System not ready, retrying in 100ms...");
+      setTimeout(initializePlugin, 100);
+      return false;
+    }
+
+    if (!initializeKittenVar()) {
+      console.warn("BlockchainPlugin: Failed to initialize kitten var, retrying in 100ms...");
+      setTimeout(initializePlugin, 100);
+      return false;
+    }
+
+    console.log("BlockchainPlugin: Initialization complete");
+    console.log("BlockchainPlugin: randomKittenVar:", $gameSystem.randomKittenVar);
+    console.log("BlockchainPlugin: Current kitten count:", $gameVariables.value($gameSystem.randomKittenVar));
+    console.log("BlockchainPlugin: Web3 available:", !!window.ethereum);
+    
+    attachFunctions();
+    window.BlockchainPlugin.initialized = true;
+    return true;
+  }
+
+  function attachFunctions() {
+    if (!$gameSystem || !$gameVariables) {
+      console.warn("BlockchainPlugin: Cannot attach functions - system not ready");
+      return;
+    }
+
+    const contractABI = [
+      // Your ABI remains unchanged (copied from your code)
+      {
+        "type": "constructor",
+        "inputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "receive",
+        "stateMutability": "payable"
+      },
+      {
+        "type": "function",
+        "name": "KITTENS_REQUIRED",
+        "inputs": [],
+        "outputs": [{"name": "", "type": "uint256", "internalType": "uint256"}],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "REWARD",
+        "inputs": [],
+        "outputs": [{"name": "", "type": "uint256", "internalType": "uint256"}],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "changeReward",
+        "inputs": [{"name": "newReward", "type": "uint256", "internalType": "uint256"}],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "dailyRewards",
+        "inputs": [{"name": "", "type": "address", "internalType": "address"}],
+        "outputs": [{"name": "", "type": "uint256", "internalType": "uint256"}],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "fundContract",
+        "inputs": [],
+        "outputs": [],
+        "stateMutability": "payable"
+      },
+      {
+        "type": "function",
+        "name": "gameAddress",
+        "inputs": [],
+        "outputs": [{"name": "", "type": "address", "internalType": "address"}],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "getKittens",
+        "inputs": [],
+        "outputs": [{"name": "", "type": "uint256", "internalType": "uint256"}],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "getTotalKittens",
+        "inputs": [],
+        "outputs": [{"name": "", "type": "uint256", "internalType": "uint256"}],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "lastClaimDay",
+        "inputs": [{"name": "", "type": "address", "internalType": "address"}],
+        "outputs": [{"name": "", "type": "uint256", "internalType": "uint256"}],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "owner",
+        "inputs": [],
+        "outputs": [{"name": "", "type": "address", "internalType": "address"}],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "renounceOwnership",
+        "inputs": [],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "rewardUser",
+        "inputs": [],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setGameAddress",
+        "inputs": [{"name": "_gameAddress", "type": "address", "internalType": "address"}],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setKittens",
+        "inputs": [
+          {"name": "userAddress", "type": "address", "internalType": "address"},
+          {"name": "_value", "type": "uint256", "internalType": "uint256"}
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "totalKittens",
+        "inputs": [],
+        "outputs": [{"name": "", "type": "uint256", "internalType": "uint256"}],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "transferOwnership",
+        "inputs": [{"name": "newOwner", "type": "address", "internalType": "address"}],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "userKittens",
+        "inputs": [{"name": "", "type": "address", "internalType": "address"}],
+        "outputs": [{"name": "", "type": "uint256", "internalType": "uint256"}],
+        "stateMutability": "view"
+      },
+      {
+        "type": "event",
+        "name": "DonationReceived",
+        "inputs": [
+          {"name": "user", "type": "address", "indexed": true, "internalType": "address"},
+          {"name": "amount", "type": "uint256", "indexed": false, "internalType": "uint256"}
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "KittensUpdated",
+        "inputs": [
+          {"name": "user", "type": "address", "indexed": true, "internalType": "address"},
+          {"name": "newValue", "type": "uint256", "indexed": false, "internalType": "uint256"}
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "OwnershipTransferred",
+        "inputs": [
+          {"name": "previousOwner", "type": "address", "indexed": true, "internalType": "address"},
+          {"name": "newOwner", "type": "address", "indexed": true, "internalType": "address"}
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "UserRewarded",
+        "inputs": [
+          {"name": "user", "type": "address", "indexed": true, "internalType": "address"},
+          {"name": "amount", "type": "uint256", "indexed": false, "internalType": "uint256"}
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "error",
+        "name": "OwnableInvalidOwner",
+        "inputs": [{"name": "owner", "type": "address", "internalType": "address"}]
+      },
+      {
+        "type": "error",
+        "name": "OwnableUnauthorizedAccount",
+        "inputs": [{"name": "account", "type": "address", "internalType": "address"}]
+      }
+    ];
+
+    // Get kittens from blockchain
+    $gameSystem.getKittens = async function() {
+      if (!window.ethereum) {
+        console.error("getKittens: No Web3 provider");
+        $gameMessage.add("Please connect wallet first.");
+        return 0;
+      }
+      try {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+        const userAddress = await signer.getAddress();
+        const contractAddress = await getContractAddress();
+        const contract = new ethers.Contract(contractAddress, contractABI, provider);
+        const kittens = await contract.getKittens({ from: userAddress });
+        const kittenCount = Number(kittens);
+        const localCount = window.BlockchainPlugin.randomKittenVar ? $gameVariables.value(window.BlockchainPlugin.randomKittenVar) : 0;
+        console.log("getKittens: Blockchain:", kittenCount, "Local:", localCount);
+        return kittenCount;
+      } catch (error) {
+        console.error("getKittens: Error:", error.message);
+        $gameMessage.add(`Error getting kittens: ${error.message}`);
+        return 0;
+      }
+    };
+
+    // Set kittens on blockchain
+    $gameSystem.setKittens = async function(kittens) {
+      if (!Number.isInteger(kittens) || kittens > 60 || kittens < 0) {
+        console.error('setKittens: Invalid count:', kittens);
+        $gameMessage.add('Kitten count must be 0-60.');
+        return false;
+      }
+      if (!window.BlockchainPlugin.randomKittenVar) {
+        console.error('setKittens: randomKittenVar not set!');
+        $gameMessage.add('Error: Game not initialized properly.');
+        return false;
+      }
+      if (!window.ethereum) {
+        console.error('setKittens: No Web3 provider');
+        $gameMessage.add('Please connect wallet first.');
+        return false;
+      }
+      try {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+        const userAddress = await signer.getAddress();
+        const contractAddress = await getContractAddress();
+        const contract = new ethers.Contract(contractAddress, contractABI, provider);
+
+        // Fetch on-chain kittens
+        const currentOnChainKittens = Number(await contract.getKittens({ from: userAddress }));
+        if (currentOnChainKittens >= 60) {
+          console.log('setKittens: Max 60 kittens reached');
+          $gameMessage.add('You have 60 kittens! Redeem rewards to collect more.');
+          $gameVariables.setValue(window.BlockchainPlugin.randomKittenVar, 0); // Reset local
+          return false;
+        }
+
+        // Cap kittens to 60
+        const maxNewKittens = Math.min(kittens, 60 - currentOnChainKittens);
+        if (maxNewKittens < kittens) {
+          console.log('setKittens: Capped kittens to', maxNewKittens, 'to stay under 60');
+          $gameMessage.add(`Kitten count capped at ${maxNewKittens} to stay under 60.`);
+        }
+
+        console.log('setKittens: Setting', maxNewKittens, 'kittens for', userAddress);
+        $gameMessage.add('Syncing kittens to blockchain...');
+        const response = await fetch('https://rpg-game-sepolia-cats.vercel.app/api/setKittens', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ kittens: maxNewKittens, userAddress })
+        });
+        const data = await response.json();
+        console.log('setKittens: API Response:', data, 'Status:', response.status);
+        if (!response.ok) throw new Error(`API error: ${data.error || response.statusText}`);
+        if (data.error) throw new Error(data.error);
+        if (!data.txHash) throw new Error('No transaction hash returned');
+
+        // Subtract synced amount from local kittens
+        const currentLocalKittens = $gameVariables.value(window.BlockchainPlugin.randomKittenVar);
+        const newLocalKittens = Math.max(0, currentLocalKittens - maxNewKittens);
+        $gameVariables.setValue(window.BlockchainPlugin.randomKittenVar, newLocalKittens);
+        console.log('setKittens: Updated local varId', window.BlockchainPlugin.randomKittenVar, 'to', newLocalKittens, 'after syncing', maxNewKittens);
+        $gameMessage.add(`Synced ${maxNewKittens} kittens successfully! Total on-chain: ${currentOnChainKittens + maxNewKittens}`);
+        return true;
+      } catch (error) {
+        console.error('setKittens: Error:', error.message);
+        $gameMessage.add(`Error syncing kittens: ${error.message}`);
+        return false;
+      }
+    };
+
+    // Connect wallet
+    $gameSystem.connectWallet = async function() {
+      if (!window.ethereum) {
+        $gameVariables.setValue(12, 0);
+        $gameMessage.add("No Web3 wallet detected. Please install MetaMask.");
+        return;
+      }
+
+      try {
+        await window.ethereum.request({ method: "eth_requestAccounts" });
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const network = await provider.getNetwork();
+        
+        if (!isValidChain(network.chainId)) {
+          $gameMessage.add("Please switch to Scroll Sepolia (534351) or Ethereum Sepolia (11155111).");
+          $gameVariables.setValue(12, 0);
+          return;
+        }
+
+        const signer = await provider.getSigner();
+        const address = await signer.getAddress();
+        $gameMessage.add(`Wallet connected: ${address.slice(0, 6)}...${address.slice(-4)}`);
+        $gameVariables.setValue(12, 1);
+        
+        console.log("connectWallet: Connected to", address);
+      } catch (error) {
+        console.error("connectWallet: Error:", error);
+        $gameMessage.add(`Connection failed: ${error.message}`);
+        $gameVariables.setValue(12, 0);
+      }
+    };
+
+    // Fund contract (owner only)
+    $gameSystem.fundContract = async function(ethAmount) {
+      if (!window.ethereum) {
+        $gameMessage.add("Please connect wallet first.");
+        return;
+      }
+
+      try {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+        const userAddress = await signer.getAddress();
+        const contractAddress = await getContractAddress();
+        const contract = new ethers.Contract(contractAddress, contractABI, signer);
+        
+        const network = await provider.getNetwork();
+        if (!isValidChain(network.chainId)) {
+          $gameMessage.add("Please switch to Scroll Sepolia or Ethereum Sepolia.");
+          return;
+        }
+
+        const currentOwner = await contract.owner();
+        if (currentOwner.toLowerCase() !== userAddress.toLowerCase()) {
+          $gameMessage.add("Only contract owner can fund the contract.");
+          return;
+        }
+
+        const amountInWei = ethers.parseEther(ethAmount.toString());
+        const tx = await contract.fundContract({ value: amountInWei });
+        $gameMessage.add("Funding contract...");
+        
+        await tx.wait();
+        $gameMessage.add(`Successfully funded ${ethAmount} ETH!`);
+        console.log("fundContract: Funded", ethAmount, "ETH");
+      } catch (error) {
+        console.error("fundContract: Error:", error.message);
+        $gameMessage.add(`Funding failed: ${error.message}`);
+      }
+    };
+
+    // Open DApp
+    $gameSystem.openDApp = function() {
+      window.open("https://blokkat-arabicblockchain-developer.vercel.app/", "_blank");
+    };
+
+    // Sync kittens from blockchain to local
+    $gameSystem.syncFromBlockchain = async function() {
+      try {
+        const blockchainKittens = await this.getKittens();
+        if (blockchainKittens > 0 && window.BlockchainPlugin.randomKittenVar) {
+          $gameVariables.setValue(window.BlockchainPlugin.randomKittenVar, blockchainKittens);
+          $gameMessage.add(`Synced ${blockchainKittens} kittens from blockchain!`);
+          console.log("syncFromBlockchain: Synced", blockchainKittens, "kittens");
+        }
+      } catch (error) {
+        console.error("syncFromBlockchain: Error:", error);
+        $gameMessage.add("Failed to sync from blockchain.");
+      }
+    };
+
+    // Sync kittens to blockchain from local
+    $gameSystem.syncToBlockchain = async function() {
+      if (!window.BlockchainPlugin.randomKittenVar) {
+        $gameMessage.add("Game not properly initialized.");
+        return;
+      }
+      
+      const localKittens = $gameVariables.value(window.BlockchainPlugin.randomKittenVar);
+      await this.setKittens(localKittens);
+    };
+
+    console.log("BlockchainPlugin: Functions attached successfully:", {
+      getKittens: !!$gameSystem.getKittens,
+      setKittens: !!$gameSystem.setKittens,
+      connectWallet: !!$gameSystem.connectWallet,
+      fundContract: !!$gameSystem.fundContract,
+      openDApp: !!$gameSystem.openDApp,
+      syncFromBlockchain: !!$gameSystem.syncFromBlockchain,
+      syncToBlockchain: !!$gameSystem.syncToBlockchain
+    });
+  }
+
+  // Start initialization
+  console.log("BlockchainPlugin: Starting initialization...");
+})();
