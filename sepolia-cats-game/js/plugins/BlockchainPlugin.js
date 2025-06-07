@@ -416,11 +416,17 @@
 
         console.log('setKittens: Setting', maxNewKittens, 'kittens for', userAddress);
         $gameMessage.add('Syncing kittens to blockchain...');
+
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
         const response = await fetch('https://rpg-game-sepolia-cats.vercel.app/api/setKittens', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ kittens: maxNewKittens, userAddress, chainId: network.chainId })
+          body: JSON.stringify({ kittens: maxNewKittens, userAddress, chainId: network.chainId }),
+          signal: controller.signal
         }).catch(err => console.error("Fetch error:", err));
+        
+        clearTimeout(timeoutId);
         const data = await response.json();
         console.log('setKittens: API Response:', data, 'Status:', response.status);
         if (!response.ok) throw new Error(`API error: ${data.error || response.statusText}`);
