@@ -417,7 +417,8 @@
         console.log('setKittens: Setting', maxNewKittens, 'kittens for', userAddress);
         $gameMessage.add('Syncing kittens to blockchain...');
 
-        console.log("Attempting");
+        console.log("Still attempting");
+        console.log("setKittens: Network chainId:", network.chainId);
 
         console.log("Before fetch", { url: 'https://rpg-game-sepolia-cats.vercel.app/api/setKittens', body: JSON.stringify({ kittens: maxNewKittens, userAddress, chainId: network.chainId }) });
         const controller = new AbortController();
