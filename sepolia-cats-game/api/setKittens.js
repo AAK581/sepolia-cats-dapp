@@ -1,6 +1,9 @@
 const ethers = require("ethers");
 
 export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Temporary CORS fix
+  res.setHeader('Access-Control-Allow-Methods', 'POST');
+  
   try {
     console.log("setKittens API: Checking GAME_PRIVATE_KEY", { hasKey: !!process.env.GAME_PRIVATE_KEY });
     if (!process.env.GAME_PRIVATE_KEY) {
@@ -28,16 +31,9 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Invalid input: kittens (0-60), valid address, and chainId required" });
     }
 
-    // Dynamic RPC and contract addresses
     const networkConfigs = {
-      534351: {
-        rpc: "https://sepolia-rpc.scroll.io",
-        contractAddress: "0xA45a75B3523334bf4017b0BB9D76d4E06661fba3"
-      },
-      11155111: {
-        rpc: "https://ethereum-sepolia-rpc.publicnode.com",
-        contractAddress: "0xa9C4cd6C657f5110C6966c78962D47c24D27BD57"
-      }
+      534351: { rpc: "https://sepolia-rpc.scroll.io", contractAddress: "0xA45a75B3523334bf4017b0BB9D76d4E06661fba3" },
+      11155111: { rpc: "https://ethereum-sepolia-rpc.publicnode.com", contractAddress: "0xa9C4cd6C657f5110C6966c78962D47c24D27BD57" }
     };
 
     const config = networkConfigs[chainId];
@@ -389,13 +385,17 @@ export default async function handler(req, res) {
   ], signer
     );
 
-  console.log("setKittens API: Sending tx", { kittens, userAddress, chainId });
+console.log("setKittens API: Sending tx", { kittens, userAddress, chainId });
     const tx = await contract.setKittens(userAddress, kittens, { gasLimit: 300000 });
-    const receipt = await tx.wait();
+    console.log("setKittens API: Transaction sent, hash:", tx.hash);
+    const receipt = await Promise.race([
+      tx.wait(),
+      new Promise((_, reject) => setTimeout(() => reject(new Error("Transaction timeout")), 30000))
+    ]);
     console.log("setKittens API: Success", { txHash: tx.hash });
     return res.status(200).json({ txHash: tx.hash });
   } catch (error) {
     console.error("setKittens API Error:", error.message, error.stack);
     return res.status(500).json({ error: error.message });
   }
-}
+};
