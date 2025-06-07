@@ -35,7 +35,7 @@ export default async function handler(req, res) {
         contractAddress: "0xA45a75B3523334bf4017b0BB9D76d4E06661fba3"
       },
       11155111: {
-        rpc: "https://rpc.sepolia.org", // Example Ethereum Sepolia RPC; replace with a reliable one if needed
+        rpc: "https://ethereum-sepolia-rpc.publicnode.com",
         contractAddress: "0xa9C4cd6C657f5110C6966c78962D47c24D27BD57"
       }
     };
@@ -388,7 +388,7 @@ export default async function handler(req, res) {
     }
   ], signer
     );
-    
+
   console.log("setKittens API: Sending tx", { kittens, userAddress, chainId });
     const tx = await contract.setKittens(userAddress, kittens, { gasLimit: 300000 });
     const receipt = await tx.wait();

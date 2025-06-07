@@ -420,7 +420,7 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ kittens: maxNewKittens, userAddress, chainId: network.chainId })
-        });
+        }).catch(err => console.error("Fetch error:", err));
         const data = await response.json();
         console.log('setKittens: API Response:', data, 'Status:', response.status);
         if (!response.ok) throw new Error(`API error: ${data.error || response.statusText}`);
