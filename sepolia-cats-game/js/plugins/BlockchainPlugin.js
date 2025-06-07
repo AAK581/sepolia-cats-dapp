@@ -419,14 +419,23 @@
 
         console.log("Attempting");
 
+        console.log("Before fetch", { url: 'https://rpg-game-sepolia-cats.vercel.app/api/setKittens', body: JSON.stringify({ kittens: maxNewKittens, userAddress, chainId: network.chainId }) });
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
-        const response = await fetch('https://rpg-game-sepolia-cats.vercel.app/api/setKittens', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ kittens: maxNewKittens, userAddress, chainId: network.chainId }),
-          signal: controller.signal
-        }).catch(err => console.error("Fetch error:", err));
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+        let response;
+        try {
+          response = await fetch('https://rpg-game-sepolia-cats.vercel.app/api/setKittens', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ kittens: maxNewKittens, userAddress, chainId: network.chainId }),
+            signal: controller.signal
+          });
+        } catch (err) {
+          console.error("Fetch failed:", err.message);
+          throw err;
+        } finally {
+          clearTimeout(timeoutId);
+        }
 
         clearTimeout(timeoutId);
         const data = await response.json();
