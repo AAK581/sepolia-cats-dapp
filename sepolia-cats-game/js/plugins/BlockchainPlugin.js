@@ -393,6 +393,7 @@
       }
       try {
         const provider = new ethers.BrowserProvider(window.ethereum);
+        const network = await provider.getNetwork();
         const signer = await provider.getSigner();
         const userAddress = await signer.getAddress();
         const contractAddress = await getContractAddress();
