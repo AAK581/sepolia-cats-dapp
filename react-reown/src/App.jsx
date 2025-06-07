@@ -1,8 +1,8 @@
 import { createAppKit } from '@reown/appkit/react';
-import { WagmiProvider, useReadContract, useWriteContract, useAccount, useNetwork } from 'wagmi';
+import { WagmiProvider, useReadContract, useWriteContract, useAccount, useAccountEffect } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
-import { scrollSepolia } from '@reown/appkit/networks';
+import { scrollSepolia, sepolia } from '@reown/appkit/networks';
 import { ThemeProvider, createTheme, Box, Switch } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useState, useEffect } from 'react';
@@ -26,7 +26,7 @@ const metadata = {
 };
 
 // Networks
-const networks = [scrollSepolia];
+const networks = [scrollSepolia, sepolia];
 
 // Create Wagmi Adapter
 const wagmiAdapter = new WagmiAdapter({
@@ -35,7 +35,7 @@ const wagmiAdapter = new WagmiAdapter({
   ssr: true,
 });
 
-// Create modal (moved outside useEffect)
+// Create modal
 createAppKit({
   adapters: [wagmiAdapter],
   networks,
@@ -449,10 +449,10 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 // AppKitProvider Component
 function AppKitProvider({ mode, setMode }) {
-  const {chain} = useNetwork();
+  const {chain} = useAccount();
   const { address, isConnected, isConnecting } = useAccount();
 
-  const contractAddress = contractAddresses[chain?.id] || contractAddress[534351];
+  const contractAddress = contractAddresses[chain?.id] || contractAddresses[534351];
 
   // Get kittens from contract
   const { data: kittenCount, error: readError, isLoading } = useReadContract({
@@ -460,7 +460,7 @@ function AppKitProvider({ mode, setMode }) {
     abi: contractAbi,
     functionName: 'getKittens',
     account: address,
-    chainId: 534351,
+    chainId: chain?.id,
     enabled: isConnected && !!address,
     refetchInterval: 10000,
   });
@@ -564,8 +564,8 @@ function AppKitProvider({ mode, setMode }) {
             {writeError && <p className="app-error">Error: {writeError.message}</p>}
           </>
         )}
-        <p className="app-textRequest">If you have Scroll Sepolia ETH that you don't need, please donate to this address</p>
-        <p>0xA45a75B3523334bf4017b0BB9D76d4E06661fba3</p>
+        <p className="app-textRequest">If you have {chain?.id == '534351' ? 'Scroll' : ''} Sepolia ETH that you don't need, please donate to this address</p>
+        <p>{chain?.id == '534351' ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57'}</p>
         <b><p className="app-textEligible">Donations above 200 SETH will be eligible for advertisement!!</p></b>
         <i><p className="disclaimer">No gambling or NSFW advertisements allowed</p></i>
       </div>
