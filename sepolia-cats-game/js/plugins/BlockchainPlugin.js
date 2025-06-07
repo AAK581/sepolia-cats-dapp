@@ -393,9 +393,9 @@
       }
       try {
         const provider = new ethers.BrowserProvider(window.ethereum);
-        const network = await provider.getNetwork();
         const signer = await provider.getSigner();
         const userAddress = await signer.getAddress();
+        const network = await provider.getNetwork(); // Define network here
         const contractAddress = await getContractAddress();
         const contract = new ethers.Contract(contractAddress, contractABI, provider);
 
@@ -404,7 +404,7 @@
         if (currentOnChainKittens >= 60) {
           console.log('setKittens: Max 60 kittens reached');
           $gameMessage.add('You have 60 kittens! Redeem rewards to collect more.');
-          $gameVariables.setValue(window.BlockchainPlugin.randomKittenVar, 0); // Reset local
+          $gameVariables.setValue(window.BlockchainPlugin.randomKittenVar, 0);
           return false;
         }
 
@@ -439,7 +439,7 @@
           clearTimeout(timeoutId);
         }
 
-        clearTimeout(timeoutId);
+        console.log("Fetch completed, status:", response.status);
         const data = await response.json();
         console.log('setKittens: API Response:', data, 'Status:', response.status);
         if (!response.ok) throw new Error(`API error: ${data.error || response.statusText}`);
