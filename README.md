@@ -57,12 +57,12 @@ day or not, and whether the contract has enough funds or not.
 
 ## Contract Address
 ### Scroll Sepolia
-0xA45a75B3523334bf4017b0BB9D76d4E06661fba3
-https://sepolia.scrollscan.com/address/0xa45a75b3523334bf4017b0bb9d76d4e06661fba3#code
+0xA45a75B3523334bf4017b0BB9D76d4E06661fba3        
+https://sepolia.scrollscan.com/address/0xa45a75b3523334bf4017b0bb9d76d4e06661fba3        
 
 ### Sepolia
-0xa9C4cd6C657f5110C6966c78962D47c24D27BD57
-https://sepolia.etherscan.io/address/0xa9C4cd6C657f5110C6966c78962D47c24D27BD57
+0xa9C4cd6C657f5110C6966c78962D47c24D27BD57        
+https://sepolia.etherscan.io/address/0xa9C4cd6C657f5110C6966c78962D47c24D27BD57        
 
 ## dApp link
 https://blokkat-arabicblockchain-developer.vercel.app/
