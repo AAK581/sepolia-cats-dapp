@@ -39,6 +39,7 @@
   // Initialize kitten variable with persistence
   function initializeKittenVar() {
     if (window.BlockchainPlugin.randomKittenVar) {
+      console.log("BlockchainPlugin: randomKittenVar already set:", window.BlockchainPlugin.randomKittenVar);
       return true;
     }
     
@@ -50,6 +51,7 @@
     // Check if we have a saved randomKittenVar
     if ($gameSystem.randomKittenVar) {
       window.BlockchainPlugin.randomKittenVar = $gameSystem.randomKittenVar;
+      console.log("BlockchainPlugin: Restored randomKittenVar from save:", window.BlockchainPlugin.randomKittenVar);
       return true;
     }
 
@@ -61,6 +63,7 @@
     $gameSystem.randomKittenVar = window.BlockchainPlugin.randomKittenVar;
     $gameVariables.setValue(window.BlockchainPlugin.randomKittenVar, 0);
     
+    console.log("BlockchainPlugin: Generated new randomKittenVar:", window.BlockchainPlugin.randomKittenVar);
     return true;
   }
 
@@ -108,6 +111,7 @@
     // Restore randomKittenVar if needed
     if ($gameSystem && window.BlockchainPlugin.randomKittenVar && !$gameSystem.randomKittenVar) {
       $gameSystem.randomKittenVar = window.BlockchainPlugin.randomKittenVar;
+      console.log("BlockchainPlugin: Restored randomKittenVar in Scene_Map:", window.BlockchainPlugin.randomKittenVar);
     }
     
     // Process pending collections
@@ -149,6 +153,10 @@
     }
 
     console.log("BlockchainPlugin: Initialization complete");
+    console.log("BlockchainPlugin: randomKittenVar:", $gameSystem.randomKittenVar);
+    console.log("BlockchainPlugin: Current kitten count:", $gameVariables.value($gameSystem.randomKittenVar));
+    console.log("BlockchainPlugin: Web3 available:", !!window.ethereum);
+    
     attachFunctions();
     window.BlockchainPlugin.initialized = true;
     return true;
@@ -161,7 +169,7 @@
     }
 
     const contractABI = [
-      // Your ABI remains unchanged
+      // Your ABI remains unchanged (copied from your code)
       {
         "type": "constructor",
         "inputs": [],
@@ -407,7 +415,7 @@
           $gameMessage.add(`Kitten count capped at ${maxNewKittens} to stay under 60.`);
         }
 
-        console.log('setKittens: Setting kittens...');
+        console.log('setKittens: Setting', maxNewKittens, 'kittens for', userAddress);
         $gameMessage.add('Syncing kittens to blockchain...');
 
         console.log("Still attempting");
@@ -418,7 +426,7 @@
         const timeoutId = setTimeout(() => {
           console.error("Fetch timed out after 20s");
           controller.abort();
-        }, 20000);
+        }, 20000); // Increased to 20 seconds
         let response;
         try {
           response = await fetch('https://rpg-game-sepolia-cats.vercel.app/api/setKittens', {
@@ -444,7 +452,7 @@
         const currentLocalKittens = $gameVariables.value(window.BlockchainPlugin.randomKittenVar);
         const newLocalKittens = Math.max(0, currentLocalKittens - maxNewKittens);
         $gameVariables.setValue(window.BlockchainPlugin.randomKittenVar, newLocalKittens);
-        console.log('setKittens: Updated local variable');
+        console.log('setKittens: Updated local varId', window.BlockchainPlugin.randomKittenVar, 'to', newLocalKittens, 'after syncing', maxNewKittens);
         $gameMessage.add(`Synced ${maxNewKittens} kittens successfully! Total on-chain: ${currentOnChainKittens + maxNewKittens}`);
         return true;
       } catch (error) {
@@ -453,7 +461,6 @@
         return false;
       }
     };
-
     // Connect wallet
     $gameSystem.connectWallet = async function() {
       if (!window.ethereum) {
@@ -478,7 +485,7 @@
         $gameMessage.add(`Wallet connected: ${address.slice(0, 6)}...${address.slice(-4)}`);
         $gameVariables.setValue(12, 1);
         
-        console.log("connectWallet: Connected");
+        console.log("connectWallet: Connected to", address);
       } catch (error) {
         console.error("connectWallet: Error:", error);
         $gameMessage.add(`Connection failed: ${error.message}`);
@@ -518,7 +525,7 @@
         
         await tx.wait();
         $gameMessage.add(`Successfully funded ${ethAmount} ETH!`);
-        console.log("fundContract: Funded");
+        console.log("fundContract: Funded", ethAmount, "ETH");
       } catch (error) {
         console.error("fundContract: Error:", error.message);
         $gameMessage.add(`Funding failed: ${error.message}`);
@@ -537,7 +544,7 @@
         if (blockchainKittens > 0 && window.BlockchainPlugin.randomKittenVar) {
           $gameVariables.setValue(window.BlockchainPlugin.randomKittenVar, blockchainKittens);
           $gameMessage.add(`Synced ${blockchainKittens} kittens from blockchain!`);
-          console.log("syncFromBlockchain: Synced kittens");
+          console.log("syncFromBlockchain: Synced", blockchainKittens, "kittens");
         }
       } catch (error) {
         console.error("syncFromBlockchain: Error:", error);
