@@ -420,7 +420,8 @@
 
         console.log("Still attempting");
         console.log("setKittens: Network chainId:", network.chainId);
-        console.log("Before fetch", { url: 'https://rpg-game-sepolia-cats.vercel.app/api/setKittens', body: JSON.stringify({ kittens: maxNewKittens, userAddress, chainId: network.chainId }) });
+        const chainIdNum = Number(network.chainId); // Convert BigInt to number
+        console.log("Before fetch", { url: 'https://rpg-game-sepolia-cats.vercel.app/api/setKittens', body: JSON.stringify({ kittens: maxNewKittens, userAddress, chainId: chainIdNum }) });
         const controller = new AbortController();
         const timeoutId = setTimeout(() => {
           console.error("Fetch timed out after 10s");
@@ -428,12 +429,12 @@
         }, 10000);
         let response;
         try {
-        response = await fetch('https://cors-anywhere.herokuapp.com/https://rpg-game-sepolia-cats.vercel.app/api/setKittens', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }, // Required for cors-anywhere
-          body: JSON.stringify({ kittens: maxNewKittens, userAddress, chainId: network.chainId }),
-          signal: controller.signal
-        });
+          response = await fetch('https://rpg-game-sepolia-cats.vercel.app/api/setKittens', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ kittens: maxNewKittens, userAddress, chainId: chainIdNum }),
+            signal: controller.signal
+          });
           console.log("Fetch completed, status:", response.status);
         } catch (err) {
           console.error("Fetch failed:", err.message, err.name);
@@ -460,7 +461,6 @@
         return false;
       }
     };
-
     // Connect wallet
     $gameSystem.connectWallet = async function() {
       if (!window.ethereum) {
