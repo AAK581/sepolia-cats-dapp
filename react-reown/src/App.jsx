@@ -476,7 +476,7 @@ function AppKitProvider({ mode, setMode }) {
 
   // Get reward
   const { data: REWARD, error: readError2, isLoading2 } = useReadContract({
-    address: contractAddress.
+    address: contractAddress,
     abi: contractAbi,
     functionName: 'REWARD',
     enabled: isConnected,
