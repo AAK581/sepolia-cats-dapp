@@ -39,7 +39,6 @@
   // Initialize kitten variable with persistence
   function initializeKittenVar() {
     if (window.BlockchainPlugin.randomKittenVar) {
-      console.log("BlockchainPlugin: randomKittenVar already set:", window.BlockchainPlugin.randomKittenVar);
       return true;
     }
     
@@ -51,7 +50,6 @@
     // Check if we have a saved randomKittenVar
     if ($gameSystem.randomKittenVar) {
       window.BlockchainPlugin.randomKittenVar = $gameSystem.randomKittenVar;
-      console.log("BlockchainPlugin: Restored randomKittenVar from save:", window.BlockchainPlugin.randomKittenVar);
       return true;
     }
 

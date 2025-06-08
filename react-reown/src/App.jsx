@@ -474,6 +474,15 @@ function AppKitProvider({ mode, setMode }) {
     refetchInterval: 10000,
   });
 
+  // Get reward
+  const { data: REWARD, error: readError2, isLoading2 } = useReadContract({
+    address: contractAddress.
+    abi: contractAbi,
+    functionName: 'REWARD',
+    enabled: isConnected,
+    refetchInterval: 10000,
+  });
+
   // Claim rewards from the contract
   const { writeContract, isPending, error: writeError } = useWriteContract();
 
@@ -556,6 +565,7 @@ function AppKitProvider({ mode, setMode }) {
             <p className="app-text">
               Total Kittens Collected By Players: {isLoading1 ? 'Loading...' : !totalKittens ? 0 : Number(totalKittens)}
             </p>
+            <p className="app-text">Current reward: {isLoading2 ? 'Loading...' : !REWARD ? 0.015 : Number(REWARD)}</p>            
             {readError && <p className="app-error">Error: {readError.message}</p>}
             {readError1 && <p className="app-error">Error: {readError1.message}</p>}
             <button className="app-button" onClick={claimRewards} disabled={isPending}>
