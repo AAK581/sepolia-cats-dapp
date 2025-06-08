@@ -62,8 +62,7 @@
     
     $gameSystem.randomKittenVar = window.BlockchainPlugin.randomKittenVar;
     $gameVariables.setValue(window.BlockchainPlugin.randomKittenVar, 0);
-    
-    console.log("BlockchainPlugin: Generated new randomKittenVar:", window.BlockchainPlugin.randomKittenVar);
+
     return true;
   }
 
@@ -111,7 +110,6 @@
     // Restore randomKittenVar if needed
     if ($gameSystem && window.BlockchainPlugin.randomKittenVar && !$gameSystem.randomKittenVar) {
       $gameSystem.randomKittenVar = window.BlockchainPlugin.randomKittenVar;
-      console.log("BlockchainPlugin: Restored randomKittenVar in Scene_Map:", window.BlockchainPlugin.randomKittenVar);
     }
     
     // Process pending collections
@@ -153,7 +151,6 @@
     }
 
     console.log("BlockchainPlugin: Initialization complete");
-    console.log("BlockchainPlugin: randomKittenVar:", $gameSystem.randomKittenVar);
     console.log("BlockchainPlugin: Current kitten count:", $gameVariables.value($gameSystem.randomKittenVar));
     console.log("BlockchainPlugin: Web3 available:", !!window.ethereum);
     
