@@ -428,12 +428,12 @@
         }, 10000);
         let response;
         try {
-          response = await fetch('https://rpg-game-sepolia-cats.vercel.app/api/setKittens', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ kittens: maxNewKittens, userAddress, chainId: network.chainId }),
-            signal: controller.signal
-          });
+        response = await fetch('https://cors-anywhere.herokuapp.com/https://rpg-game-sepolia-cats.vercel.app/api/setKittens', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }, // Required for cors-anywhere
+          body: JSON.stringify({ kittens: maxNewKittens, userAddress, chainId: network.chainId }),
+          signal: controller.signal
+        });
           console.log("Fetch completed, status:", response.status);
         } catch (err) {
           console.error("Fetch failed:", err.message, err.name);
