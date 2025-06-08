@@ -11,7 +11,7 @@
 
 ## Project Description
 Sepolia Cats is a gamified Sepolia Ethereum faucet made on top of the Scroll L2 network.
-Users can claim Scroll Sepolia ETH by collecting kittens in the Scroll Sepolia game which can be synced online using the Teleporter
+Users can claim Scroll Sepolia or Sepolia ETH by collecting kittens in the kgame which can be synced online using the Teleporter
 in-game item.
 Upon collecting at least 15 kittens, a user can claim a reward from the dApp, with a maximum of 4 rewards per day.
 The game was made using RPG Maker MZ, the dApp was made using a React app using Reown Appkit and Wagmi, and the smart contract was tested
@@ -55,9 +55,14 @@ day or not, and whether the contract has enough funds or not.
 
 # Important Links and Addresses
 
-## Contract Addres
-0xEDDe9fc8ca8668046f9EAf9b64FDc94620518E26
-https://sepolia.scrollscan.com/address/0xEDDe9fc8ca8668046f9EAf9b64FDc94620518E26
+## Contract Address
+### Scroll Sepolia
+0xA45a75B3523334bf4017b0BB9D76d4E06661fba3
+https://sepolia.scrollscan.com/address/0xa45a75b3523334bf4017b0bb9d76d4e06661fba3#code
+
+### Sepolia
+0xa9C4cd6C657f5110C6966c78962D47c24D27BD57
+https://sepolia.etherscan.io/address/0xa9C4cd6C657f5110C6966c78962D47c24D27BD57
 
 ## dApp link
 https://blokkat-arabicblockchain-developer.vercel.app/
@@ -67,8 +72,8 @@ https://rpg-game-sepolia-cats.vercel.app/
 
 
 # How To Run Tests
-In order to run the 10 test functions in the GameContract.t.sol file, just run "forge test" after installing Foundry in /foundry-smartContract.
-In order to install Foundry follow this guide: https://book.getfoundry.sh/introduction/installation/
+In order to run the 11 test functions in the GameContract.t.sol file, just run "forge test" after installing Foundry in /foundry-smartContract.
+In order to install Foundry, follow this guide: https://book.getfoundry.sh/introduction/installation/
 
 
 # How To Run The Program
