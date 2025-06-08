@@ -420,13 +420,13 @@
 
         console.log("Still attempting");
         console.log("setKittens: Network chainId:", network.chainId);
-        const chainIdNum = Number(network.chainId); // Convert BigInt to number
+        const chainIdNum = Number(network.chainId);
         console.log("Before fetch", { url: 'https://rpg-game-sepolia-cats.vercel.app/api/setKittens', body: JSON.stringify({ kittens: maxNewKittens, userAddress, chainId: chainIdNum }) });
         const controller = new AbortController();
         const timeoutId = setTimeout(() => {
-          console.error("Fetch timed out after 10s");
+          console.error("Fetch timed out after 20s");
           controller.abort();
-        }, 10000);
+        }, 20000); // Increased to 20 seconds
         let response;
         try {
           response = await fetch('https://rpg-game-sepolia-cats.vercel.app/api/setKittens', {
