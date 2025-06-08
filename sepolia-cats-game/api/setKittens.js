@@ -33,7 +33,7 @@ export default async function handler(req, res) {
 
     const networkConfigs = {
       534351: { rpc: "https://sepolia-rpc.scroll.io", contractAddress: "0xA45a75B3523334bf4017b0BB9D76d4E06661fba3" },
-      11155111: { rpc: "https://sepolia.infura.io", contractAddress: "0xa9C4cd6C657f5110C6966c78962D47c24D27BD57" }
+      11155111: { rpc: "https://eth-sepolia.g.alchemy.com/v2/demo", contractAddress: "0xa9C4cd6C657f5110C6966c78962D47c24D27BD57" }
     };
 
     const config = networkConfigs[chainId];
