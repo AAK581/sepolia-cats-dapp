@@ -255,5 +255,12 @@ contract GameContract is Ownable {
         require(_gameAddress != address(0), "Invalid address");
         gameAddress = _gameAddress;
     }
-}
 
+    /// @notice Withdraws the funds of the contract to facilitate updating
+    /// @dev Only the owner can use it
+    function withdrawFunds() external onlyOwner {
+        require(address(this).balance > 0, 'The contract has 0 funds');
+        (bool success, ) = msg.sender.call{value: address(this).balance}("");
+        require(success, "Withdrawal failed");
+    }
+}
