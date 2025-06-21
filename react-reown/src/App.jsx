@@ -582,7 +582,7 @@ function AppKitProvider({ mode, setMode }) {
       <img className="app-sepImg" src="/sepoliaSuit1.png" useMap="#image-map" alt="Sepolia Cats Mascot" />
       <footer className="footerName">Made by AAK581</footer>
       <footer className="footerLinks">
-        <a href="https://www.linkedin.com/in/adham-ahmad-3849b324b/" target="_blank" rel="noopener noreferrer">LinkedIn</a> - 
+        <a href="https://www.linkedin.com/in/adham-ahmed-3849b324b/" target="_blank" rel="noopener noreferrer">LinkedIn</a> - 
         <a href="https://github.com/AAK581" target="_blank" rel="noopener noreferrer"> Github</a>
       </footer>
     </Box>
