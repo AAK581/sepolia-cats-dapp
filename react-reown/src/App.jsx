@@ -2,7 +2,7 @@ import { createAppKit } from '@reown/appkit/react';
 import { WagmiProvider, useReadContract, useWriteContract, useAccount, useAccountEffect } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
-import { scrollSepolia, sepolia } from '@reown/appkit/networks';
+import { scrollSepolia, sepolia, monadTestnet } from '@reown/appkit/networks';
 import { ThemeProvider, createTheme, Box, Switch } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useState, useEffect } from 'react';
@@ -26,7 +26,7 @@ const metadata = {
 };
 
 // Networks
-const networks = [scrollSepolia, sepolia];
+const networks = [scrollSepolia, sepolia, monadTestnet];
 
 // Create Wagmi Adapter
 const wagmiAdapter = new WagmiAdapter({
@@ -47,7 +47,8 @@ createAppKit({
 // Contract configuration
 const contractAddresses = {
   534351: '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3',
-  11155111: '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57'
+  11155111: '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57',
+  10143: '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7'
 };
 //const contractAddress = '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3';
 const contractAbi = [
@@ -575,7 +576,7 @@ function AppKitProvider({ mode, setMode }) {
           </>
         )}
         <p className="app-textRequest">If you have {chain?.id == '534351' ? 'Scroll' : ''} Sepolia ETH that you don't need, please donate to this address</p>
-        <p>{chain?.id == '534351' ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57'}</p>
+        <p>{chain?.id == '534351' ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : chain?.id == '11155111' ? '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57' : chain?.id == '10143' ? '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7' : '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3'}</p>
         <b><p className="app-textEligible">Donations above 200 SETH will be eligible for advertisement!!</p></b>
         <i><p className="disclaimer">No gambling or NSFW advertisements allowed</p></i>
       </div>
