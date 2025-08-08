@@ -65,7 +65,7 @@ https://sepolia.scrollscan.com/address/0xa45a75b3523334bf4017b0bb9d76d4e06661fba
 https://sepolia.etherscan.io/address/0xa9C4cd6C657f5110C6966c78962D47c24D27BD57        
 
 ## dApp link
-https://blokkat-arabicblockchain-developer.vercel.app/
+https://sepolia-cats-dapp.vercel.app/
 
 ## Game link
 https://rpg-game-sepolia-cats.vercel.app/
