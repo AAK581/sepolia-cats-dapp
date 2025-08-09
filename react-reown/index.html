@@ -4,7 +4,15 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/oiia.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Testnet Cats dApp</title>
+    <title id="dynamic-title">Testnet Cats dApp</title>
+    <script>
+      if (window.ethereum) {
+        window.ethereum.request({ method: 'eth_chainId' }).then(chainId => {
+          const title = document.getElementById('dynamic-title');
+          title.textContent = chainId === '0x2a63' ? 'Monad Cats dApp' : 'Sepolia Cats dApp';
+        });
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

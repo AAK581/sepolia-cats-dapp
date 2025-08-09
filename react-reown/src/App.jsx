@@ -528,11 +528,11 @@ function AppKitProvider({ mode, setMode }) {
       }}
     >
 
-      <a href={chain?.id === 10143 ? 'https://monad-cats-game.vercel.app/' : 'https://rpg-game-sepolia-cats.vercel.app/'} target="_blank" rel="noopener noreferrer">
+      <a href={chain?.id === 11155111 || chain?.id === 534351 ? 'https://rpg-game-sepolia-cats.vercel.app/' : 'https://monad-cats-game.vercel.app/'} target="_blank" rel="noopener noreferrer">
         <img src="/oiia.png" alt="accessGameImg" className="accessGameImg" />
       </a>
       <p className="pPlay">
-        Play the game <a href={chain?.id === 10143 ? 'https://monad-cats-game.vercel.app/' : 'https://rpg-game-sepolia-cats.vercel.app/'} target="_blank" rel="noopener noreferrer">here</a>!
+        Play the game <a href={chain?.id === 11155111 || chain?.id === 534351 ? 'https://rpg-game-sepolia-cats.vercel.app/' : 'https://monad-cats-game.vercel.app/'} target="_blank" rel="noopener noreferrer">here</a>!
       </p>
       <div className="containerDiv" sx={[
         (theme) => ({
@@ -543,9 +543,7 @@ function AppKitProvider({ mode, setMode }) {
             backgroundColor: theme.palette.secondary.main,
           }),
       ]}>
-        <h1 className="app-title">
-          {chain?.id === 10143 ? 'Monad Cats dApp' : 'Sepolia Cats dApp'}
-        </h1>
+        <h1 className="app-title">{chain?.id === 11155111 || chain?.id === 534351 ? 'Sepolia Cats dApp' : 'Monad Cats dApp'}</h1>
         <FormGroup>
           <FormControlLabel
             control={
@@ -578,9 +576,9 @@ function AppKitProvider({ mode, setMode }) {
           </>
         )}
         <p className="app-textRequest">
-          If you have any {chain?.id === 10143 ? 'Testnet MON' : 'Sepolia ETH'} that you don't need, please donate to this address
+          If you have {chain?.id === 11155111 || chain?.id === 534351 ? 'Sepolia ETH' : 'Testnet MON'} that you don't need, please donate to this address
         </p>
-        <p>{chain?.id == '534351' ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : chain?.id == '11155111' ? '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57' : chain?.id == '10143' ? '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7' : '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3'}</p>
+        <p>{chain?.id == '534351' ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : chain?.id == '11155111' ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57'}</p>
         <b><p className="app-textEligible">Donations above 200 SETH will be eligible for advertisement!!</p></b>
         <i><p className="disclaimer">No gambling or NSFW advertisements allowed</p></i>
       </div>
