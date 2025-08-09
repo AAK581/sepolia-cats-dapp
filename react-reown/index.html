@@ -9,7 +9,7 @@
       if (window.ethereum) {
         window.ethereum.request({ method: 'eth_chainId' }).then(chainId => {
           const title = document.getElementById('dynamic-title');
-          title.textContent = chainId === '0x2a63' ? 'Monad Cats dApp' : 'Sepolia Cats dApp';
+          title.textContent = chainId === '0xaa36a7' || chainId === '0x7a69' ? 'Sepolia Cats dApp' : 'Monad Cats dApp'; // 0xaa36a7 = Scroll Sepolia, 0x7a69 = Sepolia
         });
       }
     </script>

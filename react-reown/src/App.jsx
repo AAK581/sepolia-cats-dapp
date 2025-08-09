@@ -566,7 +566,7 @@ function AppKitProvider({ mode, setMode }) {
             <p className="app-text">
               Total Kittens Collected By Players: {isLoading1 ? 'Loading...' : !totalKittens ? 0 : Number(totalKittens)}
             </p>
-            <p className="app-text">Current reward: {isLoading2 ? 'Loading...' : !REWARD ? "0.015 ETH" : `${Number(REWARD)/1000000000000000000} ETH`}</p>            
+            <p className="app-text">Current reward: {isLoading2 ? 'Loading...' : !REWARD ? (chain?.id === 10143 ? "0.025 MON" : "0.015 ETH") : `${Number(REWARD)/1000000000000000000} ${chain?.id === 10143 ? 'MON' : 'ETH'}`}</p>           
             {readError && <p className="app-error">Error: {readError.message}</p>}
             {readError1 && <p className="app-error">Error: {readError1.message}</p>}
             <button className="app-button" onClick={claimRewards} disabled={isPending}>
@@ -579,7 +579,7 @@ function AppKitProvider({ mode, setMode }) {
           If you have {chain?.id === 11155111 || chain?.id === 534351 ? 'Sepolia ETH' : 'Testnet MON'} that you don't need, please donate to this address
         </p>
         <p>{chain?.id == '534351' ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : chain?.id == '11155111' ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57'}</p>
-        <b><p className="app-textEligible">Donations above 200 SETH will be eligible for advertisement!!</p></b>
+        <b><p className="app-textEligible">Donations above {chain?.id === 10143 ? '200 MON' : '200 SETH'} will be eligible for advertisement!!</p></b>
         <i><p className="disclaimer">No gambling or NSFW advertisements allowed</p></i>
       </div>
       <img className="app-sepImg" src="/sepoliaSuit1.png" useMap="#image-map" alt="Sepolia Cats Mascot" />
