@@ -569,6 +569,7 @@ function AppKitProvider({ mode, setMode }) {
             <p className="app-text">Current reward: {isLoading2 ? 'Loading...' : !REWARD ? (chain?.id === 10143 ? "0.025 MON" : "0.015 ETH") : `${Number(REWARD)/1000000000000000000} ${chain?.id === 10143 ? 'MON' : 'ETH'}`}</p>           
             {readError && <p className="app-error">Error: {readError.message}</p>}
             {readError1 && <p className="app-error">Error: {readError1.message}</p>}
+            <p className="app-text">Minimum kittens required to claim rewards: 15 kittens</p>
             <button className="app-button" onClick={claimRewards} disabled={isPending}>
               {isPending ? 'Claiming...' : 'Claim Rewards'}
             </button>
