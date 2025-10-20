@@ -140,6 +140,35 @@ footer {
   overflow: visible;
 }
 
+.network-window {
+  position: absolute;
+  left: 20px;
+  bottom: 100px; /* Adjust based on app-sepImg height */
+  width: 150px;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 10;
+  font-size: 0.9rem;
+}
+
+.network-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.network-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.network-list li {
+  font-size: 0.85rem;
+  margin-bottom: 3px;
+}
+
 @media only screen and (max-width: 600px) {
   .pPlay {
     font-size: 0.6rem;
@@ -175,6 +204,17 @@ footer {
 
   .footerLinks {
     right: 4%;
+  }
+
+  .network-window {
+    left: 10px;
+    bottom: 150px; /* Adjust for smaller screens */
+    width: 120px;
+    font-size: 0.7rem;
+  }
+
+  .network-list li {
+    font-size: 0.7rem;
   }
 }
 
@@ -212,5 +252,16 @@ footer {
     font-size: 1.1rem;
     top: 7%;
     left: 0.6%;
+  }
+
+  .network-window {
+    left: 30px;
+    bottom: 120px;
+    width: 180px;
+    font-size: 1rem;
+  }
+
+  .network-list li {
+    font-size: 0.9rem;
   }
 }

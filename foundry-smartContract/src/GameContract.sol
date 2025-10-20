@@ -34,7 +34,7 @@ contract GameContract is Ownable {
     /// @dev Please use this variable instead of hardcoding it, same goes for REWARD
     uint256 public constant KITTENS_REQUIRED = 15;
     /// @notice The amount given by the faucet upon collecting the required number of kittens
-    uint256 public REWARD = 0.05 ether;
+    uint256 public REWARD = 10.0 ether;
     /// @notice The total number of kittens collected everywhere
     uint256 public totalKittens;
 

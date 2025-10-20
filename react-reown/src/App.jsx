@@ -2,7 +2,7 @@ import { createAppKit } from '@reown/appkit/react';
 import { WagmiProvider, useReadContract, useWriteContract, useAccount, useAccountEffect } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
-import { scrollSepolia, sepolia, monadTestnet } from '@reown/appkit/networks';
+import { scrollSepolia, sepolia, monadTestnet, flowTestnet } from '@reown/appkit/networks';
 import { ThemeProvider, createTheme, Box, Switch } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useState, useEffect } from 'react';
@@ -26,7 +26,7 @@ const metadata = {
 };
 
 // Networks
-const networks = [scrollSepolia, sepolia, monadTestnet];
+const networks = [scrollSepolia, sepolia, monadTestnet, flowTestnet];
 
 // Create Wagmi Adapter
 const wagmiAdapter = new WagmiAdapter({
@@ -48,9 +48,9 @@ createAppKit({
 const contractAddresses = {
   534351: '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3',
   11155111: '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57',
-  10143: '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7'
+  10143: '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7',
+  545: '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7'
 };
-//const contractAddress = '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3';
 const contractAbi = [
   {
     "type": "constructor",
@@ -528,12 +528,21 @@ function AppKitProvider({ mode, setMode }) {
       }}
     >
 
-      <a href={chain?.id === 11155111 || chain?.id === 534351 ? 'https://rpg-game-sepolia-cats.vercel.app/' : 'https://monad-cats-game.vercel.app/'} target="_blank" rel="noopener noreferrer">
+      <a href={chain?.id === 545 ? 'https://flow-cats-rpg-game.vercel.app/' : chain?.id === 11155111 ? 'https://rpg-game-sepolia-cats.vercel.app/' : chain?.id === 534351 ? 'https://rpg-game-sepolia-cats.vercel.app/' : 'https://monad-cats-game.vercel.app/'} target="_blank" rel="noopener noreferrer">
         <img src="/oiia.png" alt="accessGameImg" className="accessGameImg" />
       </a>
       <p className="pPlay">
-        Play the game <a href={chain?.id === 11155111 || chain?.id === 534351 ? 'https://rpg-game-sepolia-cats.vercel.app/' : 'https://monad-cats-game.vercel.app/'} target="_blank" rel="noopener noreferrer">here</a>!
+        Play the game <a href={chain?.id === 545 ? 'https://flow-cats-rpg-game.vercel.app/' : chain?.id === 11155111 ? 'https://rpg-game-sepolia-cats.vercel.app/' : chain?.id === 534351 ? 'https://rpg-game-sepolia-cats.vercel.app/' : 'https://monad-cats-game.vercel.app/'} target="_blank" rel="noopener noreferrer">here</a>!
       </p>
+      <div className="network-window">
+        <p className="network-title">Supported Networks:</p>
+        <ul className="network-list">
+          <li>Flow Testnet (545)</li>
+          <li>Sepolia (11155111)</li>
+          <li>Scroll Sepolia (534351)</li>
+          <li>Monad Testnet (10143)</li>
+        </ul>
+      </div>
       <div className="containerDiv" sx={[
         (theme) => ({
           backgroundColor: '#e1e5e9',
@@ -543,7 +552,9 @@ function AppKitProvider({ mode, setMode }) {
             backgroundColor: theme.palette.secondary.main,
           }),
       ]}>
-        <h1 className="app-title">{chain?.id === 11155111 || chain?.id === 534351 ? 'Sepolia Cats dApp' : 'Monad Cats dApp'}</h1>
+        <h1 className="app-title">
+          {chain?.id === 545 ? 'Flow Cats dApp' : chain?.id === 11155111 ? 'Sepolia Cats dApp' : chain?.id === 534351 ? 'Sepolia Cats dApp' : 'Monad Cats dApp'}
+        </h1>
         <FormGroup>
           <FormControlLabel
             control={
@@ -566,7 +577,7 @@ function AppKitProvider({ mode, setMode }) {
             <p className="app-text">
               Total Kittens Collected By Players: {isLoading1 ? 'Loading...' : !totalKittens ? 0 : Number(totalKittens)}
             </p>
-            <p className="app-text">Current reward: {isLoading2 ? 'Loading...' : !REWARD ? (chain?.id === 10143 ? "0.025 MON" : "0.015 ETH") : `${Number(REWARD)/1000000000000000000} ${chain?.id === 10143 ? 'MON' : 'ETH'}`}</p>           
+            <p className="app-text">Current reward: {isLoading2 ? 'Loading...' : !REWARD ? (chain?.id === 545 ? "20 FLOW" : chain?.id === 10143 ? "0.025 MON" : "0.015 ETH") : `${Number(REWARD)/100000000} ${chain?.id === 545 ? 'FLOW' : chain?.id === 10143 ? 'MON' : 'ETH'}`}</p>           
             {readError && <p className="app-error">Error: {readError.message}</p>}
             {readError1 && <p className="app-error">Error: {readError1.message}</p>}
             <p className="app-text">Minimum kittens required to claim rewards: 15 kittens</p>
@@ -577,10 +588,10 @@ function AppKitProvider({ mode, setMode }) {
           </>
         )}
         <p className="app-textRequest">
-          If you have {chain?.id === 11155111 || chain?.id === 534351 ? 'Sepolia ETH' : 'Testnet MON'} that you don't need, please donate to this address
+          If you have {chain?.id === 545 ? 'Testnet FLOW' : chain?.id === 11155111 || chain?.id === 534351 ? 'Sepolia ETH' : 'Testnet MON'} that you don't need, please donate to this address
         </p>
-        <p>{chain?.id == '534351' ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : chain?.id == '11155111' ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57'}</p>
-        <b><p className="app-textEligible">Donations above {chain?.id === 10143 ? '200 MON' : '200 SETH'} will be eligible for advertisement!!</p></b>
+        <p>{chain?.id === 545 ? '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7' : chain?.id === 534351 ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : chain?.id === 11155111 ? '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57' : '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7'}</p>
+        <b><p className="app-textEligible">Donations above {chain?.id === 545 ? '1,000,000 FLOW' : chain?.id === 10143 ? '200 MON' : '200 SETH'} will be eligible for advertisement!!</p></b>
         <i><p className="disclaimer">No gambling or NSFW advertisements allowed</p></i>
       </div>
       <img className="app-sepImg" src="/sepoliaSuit1.png" useMap="#image-map" alt="Sepolia Cats Mascot" />
