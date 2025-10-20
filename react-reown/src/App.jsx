@@ -577,7 +577,7 @@ return (
             <p className="app-text">
               Total Kittens Collected By Players: {isLoading1 ? 'Loading...' : !totalKittens ? 0 : Number(totalKittens)}
             </p>
-            <p className="app-text">Current reward: {isLoading2 ? 'Loading...' : !REWARD ? (chain?.id === 10143 ? "0.025 MON" : chain?.id === 11155111 || chain?.id === 534351 ? "0.015 ETH" : "20 FLOW") : `${Number(REWARD) / (chain?.id === 11155111 || chain?.id === 534351 ? 1000000000000000000 : 100000000)} ${chain?.id === 10143 ? 'MON' : chain?.id === 11155111 || chain?.id === 534351 ? 'ETH' : 'FLOW'}`}</p>
+            <p className="app-text">Current reward: {isLoading2 ? 'Loading...' : !REWARD ? (chain?.id === 10143 ? "0.025 MON" : chain?.id === 11155111 || chain?.id === 534351 ? "0.015 ETH" : "10 FLOW") : `${Number(REWARD) / 1000000000000000000} ${chain?.id === 10143 ? 'MON' : chain?.id === 11155111 || chain?.id === 534351 ? 'ETH' : 'FLOW'}`}</p>
             {readError && <p className="app-error">Error: {readError.message}</p>}
             {readError1 && <p className="app-error">Error: {readError1.message}</p>}
             <p className="app-text">Minimum kittens required to claim rewards: 15 kittens</p>
