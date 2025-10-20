@@ -4,12 +4,27 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/oiia.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title id="dynamic-title">Monad Cats dApp</title>
+    <title id="dynamic-title">Blockchain Cats dApp</title>
     <script>
       if (window.ethereum) {
         window.ethereum.request({ method: 'eth_chainId' }).then(chainId => {
           const title = document.getElementById('dynamic-title');
-          title.textContent = chainId === '0xaa36a7' || chainId === '0x7a69' ? 'Sepolia Cats dApp' : 'Monad Cats dApp'; // 0xaa36a7 = Scroll Sepolia, 0x7a69 = Sepolia
+          const chainIdDecimal = parseInt(chainId, 16);
+          
+          // Priority order: FLOW > Sepolia > Scroll Sepolia > Monad
+          if (chainIdDecimal === 545 || chainId === '0x221') {
+            title.textContent = 'Flow Cats dApp';
+          } else if (chainIdDecimal === 11155111 || chainId === '0xaa36a7') {
+            title.textContent = 'Sepolia Cats dApp';
+          } else if (chainIdDecimal === 534351 || chainId === '0x8274f') {
+            title.textContent = 'Scroll Sepolia Cats dApp';
+          } else if (chainIdDecimal === 10143 || chainId === '0x279f') {
+            title.textContent = 'Monad Cats dApp';
+          } else {
+            title.textContent = 'Testnet Cats dApp';
+          }
+        }).catch(error => {
+          console.error('Error detecting chain:', error);
         });
       }
     </script>
