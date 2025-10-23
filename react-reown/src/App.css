@@ -92,10 +92,12 @@ footer {
 
 .footerName {
   left: 12.5%;
+  font-size: 1.25rem;
 }
 
 .footerLinks {
   right: 15%;
+  font-size: 1.25rem;
 }
 
 .accessGameImg {
@@ -183,6 +185,10 @@ footer {
 .network-list li {
   font-size: 0.85rem;
   margin-bottom: 3px;
+}
+
+a {
+  color: #5c63eb
 }
 
 @media only screen and (max-width: 600px) {
