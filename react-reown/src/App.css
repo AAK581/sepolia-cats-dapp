@@ -24,7 +24,7 @@ html, body {
 
 .app-title {
   font-size: 2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   margin-top: 0;
   font-weight: 700;
   letter-spacing: -0.5px;
@@ -32,8 +32,8 @@ html, body {
 
 .app-text {
   font-size: 1.05rem;
-  margin: 0.7rem 0;
-  padding: 0.4rem 0;
+  margin: 0.4rem 0;
+  padding: 0.2rem 0;
   transition: opacity 0.2s ease;
 }
 
@@ -43,7 +43,7 @@ html, body {
 
 .app-textEligible {
   font-size: 1.1rem;
-  margin: 1rem 0;
+  margin: 0.8rem 0;
   padding: 0.8rem;
   font-weight: 600;
   border-radius: 8px;
@@ -53,14 +53,14 @@ html, body {
 
 .app-textRequest {
   font-size: 1rem;
-  margin: 1.2rem 0 0.5rem 0;
+  margin: 0.8rem 0 0.3rem 0;
   opacity: 0.9;
 }
 
 .app-error {
   color: #ff4757;
   font-size: 1rem;
-  margin: 0.7rem 0;
+  margin: 0.4rem 0;
   padding: 0.6rem;
   background-color: rgba(255, 71, 87, 0.1);
   border-radius: 6px;
@@ -68,7 +68,7 @@ html, body {
 }
 
 .app-button {
-  margin-top: 1.2rem;
+  margin-top: 0.8rem;
   padding: 0.85rem 2rem;
   background-color: #667eea;
   color: white;
@@ -169,7 +169,7 @@ footer {
 
 .containerDiv {
   background-color: rgba(255, 255, 255, 0.95);
-  padding: 3rem 2.5rem 8rem 2.5rem;
+  padding: 2.5rem 2.5rem 8rem 2.5rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   max-width: 700px;
