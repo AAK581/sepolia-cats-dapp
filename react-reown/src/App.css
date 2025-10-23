@@ -3,117 +3,91 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: rgba(0, 0, 255, 0);
+}
+
+#root > div {
+  background-color: rgba(245, 244, 244, 0) !important;
 }
 
 html, body {
   scrollbar-width: none;
   -ms-overflow-style: none;
   overflow: hidden;
-  background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+  background: linear-gradient(135deg, #8bc4c1 0%, #fed6e3 100%);
+  min-height: 100vh;
 }
 
 [data-mui-color-scheme="dark"] html,
 [data-mui-color-scheme="dark"] body {
-  background: linear-gradient(135deg, #2c3e86 0%, #5e35b1 100%);
+  background: linear-gradient(135deg, #2c3e50 0%, #4a5568 100%) !important;
 }
 
+.dark-mode,
+[data-theme="dark"] {
+  background: linear-gradient(135deg, #2c3e50 0%, #4a5568 100%) !important;
+}
 .mainDiv {
   text-align: center;
   background-color: blue;
 }
 
 .app-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
   margin-top: 0;
-  font-weight: 700;
-  letter-spacing: -0.5px;
 }
 
 .app-text {
-  font-size: 1.05rem;
-  margin: 0.4rem 0;
-  padding: 0.2rem 0;
-  transition: opacity 0.2s ease;
-}
-
-.app-text:hover {
-  opacity: 0.8;
+  font-size: 1rem;
+  margin: 0.5rem 0;
 }
 
 .app-textEligible {
-  font-size: 1.1rem;
-  margin: 0.8rem 0;
-  padding: 0.8rem;
-  font-weight: 600;
-  border-radius: 8px;
-  background-color: rgba(255, 87, 108, 0.15);
-  border: 2px solid rgba(255, 87, 108, 0.3);
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  margin-top: 0.5rem;
 }
 
 .app-textRequest {
   font-size: 1rem;
-  margin: 0.8rem 0 0.3rem 0;
-  opacity: 0.9;
+  margin: 0.5rem 0;
+  margin-top: 1rem; 
 }
 
 .app-error {
-  color: #ff4757;
+  color: red;
   font-size: 1rem;
-  margin: 0.4rem 0;
-  padding: 0.6rem;
-  background-color: rgba(255, 71, 87, 0.1);
-  border-radius: 6px;
-  border-left: 3px solid #ff4757;
+  margin: 0.5rem 0;
 }
 
 .app-button {
-  margin-top: 0.8rem;
-  padding: 0.85rem 2rem;
-  background-color: #667eea;
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  background-color: #1976d2;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-  transition: all 0.2s ease;
 }
-
 .app-button:hover {
-  background-color: #5568d3;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+  background-color: #1565c0;
 }
-
-.app-button:active {
-  transform: translateY(0);
-}
-
 .app-button:disabled {
   background-color: #bdbdbd;
   cursor: not-allowed;
-  box-shadow: none;
-  transform: none;
 }
 
 .app-sepImg {
   text-align: center;
-  position: fixed;
-  bottom: 0;
+  position: absolute;
+  bottom: 0rem;
   width: 18%;
-  left: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-  z-index: 100;
 }
 
 footer {
-  position: fixed;
-  bottom: 1rem;
-  font-size: 0.9rem;
-  z-index: 50;
+  position: absolute;
+  bottom: 0;
 }
 
 .footerName {
@@ -124,27 +98,17 @@ footer {
   right: 15%;
 }
 
-.footerLinks a {
-  color: inherit;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.footerLinks a:hover {
-  opacity: 0.7;
-  text-decoration: underline;
-}
-
 .accessGameImg {
   width: 4%;
   position: absolute;
   top: 5%;
-  left: 3%;
-  transition: transform 0.3s ease;
+  left: 4%;
+  transform: scale(1);
+  transition: transform 0.3s;
 }
 
 .accessGameImg:hover {
-  transform: scale(1.15);
+  transform: scale(1.2);
 }
 
 .pPlay {
@@ -152,51 +116,37 @@ footer {
   position: absolute;
   top: 14%;
   left: 1%;
-  font-size: 1rem;
-}
-
-.pPlay a {
-  color: #667eea;
-  text-decoration: none;
-  font-weight: 600;
-  transition: opacity 0.2s ease;
-}
-
-.pPlay a:hover {
-  opacity: 0.7;
-  text-decoration: underline;
 }
 
 .containerDiv {
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 2.5rem 2.5rem 18rem 2.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-  max-width: 700px;
-  margin: 0 auto;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  position: relative;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 4.2%;
+  padding-bottom: 3%;
+  box-shadow: 0 0.2rem 0.5rem 0 rgba(0, 0, 0, .2);
+  border-radius: 1rem;
 }
 
-.disclaimer {
-  font-size: 0.75rem;
-  font-style: italic;
-  opacity: 0.6;
-  margin-top: 0.3rem;
+.disclaimer{
+  font-size: 0.7rem;
 }
 
 .w3div {
-  margin: 1rem auto;
-  display: flex;
-  justify-content: center;
+  margin: 0 35%;
 }
 
+/* Hide w3m-button until isConnected is determined */
 .connectButton {
   visibility: hidden;
   height: 0;
   width: 0;
   overflow: hidden;
+}
+
+/* Show the button only when needed */
+.w3div {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--wui-spacing-m);
 }
 
 .w3div .connectButton[style*="display: block"] {
@@ -207,25 +157,21 @@ footer {
 }
 
 .network-window {
-  position: fixed;
+  position: absolute;
   left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 160px;
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 1rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  bottom: 300px;
+  width: 150px;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   z-index: 10;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.9rem;
 }
 
 .network-title {
-  font-weight: 600;
-  margin-bottom: 0.6rem;
-  font-size: 0.95rem;
-  color: #667eea;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .network-list {
@@ -236,82 +182,40 @@ footer {
 
 .network-list li {
   font-size: 0.85rem;
-  margin-bottom: 0.5rem;
-  padding: 0.4rem 0.6rem;
-  background-color: rgba(102, 126, 234, 0.08);
-  border-radius: 6px;
-  transition: background-color 0.2s ease;
+  margin-bottom: 3px;
 }
 
-.network-list li:hover {
-  background-color: rgba(102, 126, 234, 0.15);
-}
-
-/* Dark mode adjustments */
-[data-mui-color-scheme="dark"] .containerDiv {
-  background-color: rgba(55, 65, 95, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-[data-mui-color-scheme="dark"] .network-window {
-  background-color: rgba(55, 65, 95, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-[data-mui-color-scheme="dark"] .app-textEligible {
-  background-color: rgba(255, 87, 108, 0.3);
-  border-color: rgba(255, 87, 108, 0.6);
-}
-
-[data-mui-color-scheme="dark"] .network-list li {
-  background-color: rgba(102, 126, 234, 0.25);
-}
-
-[data-mui-color-scheme="dark"] .network-list li:hover {
-  background-color: rgba(102, 126, 234, 0.4);
-}
-
-/* Responsive design */
 @media only screen and (max-width: 600px) {
   .pPlay {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     top: 6%;
     left: 1%;
   }
-  
   .accessGameImg {
     width: 7%;
     top: 3%;
     left: 8%;
   }
-  
   .containerDiv {
-    padding: 2rem 1.5rem 15rem 1.5rem;
+    padding: 4.2%;
     margin-top: 3rem;
   }
-  
-  .app-title {
-    font-size: 1.6rem;
-  }
-  
   .app-text {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
-  
   p {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
-  
   .app-sepImg {
+    bottom: -0.1rem;
     width: 40%;
   }
-  
   footer {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
-  
   .footerName {
     left: 1%;
+    width: 8rem;
   }
 
   .footerLinks {
@@ -320,38 +224,38 @@ footer {
 
   .network-window {
     left: 10px;
-    top: auto;
     bottom: 150px;
-    transform: none;
-    width: 130px;
-    padding: 0.8rem;
-  }
-
-  .network-title {
-    font-size: 0.85rem;
+    width: 120px;
+    font-size: 0.7rem;
   }
 
   .network-list li {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 }
 
 @media only screen and (min-width: 1600px) {
   .app-textRequest {
     font-size: 1.1rem;
-    margin-top: 1.5rem; 
+    margin: 0.5rem 0;
+    margin-top: 2rem; 
   }
 
   .app-textEligible {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    margin-top: 2rem;
   }
 
   .app-sepImg {
+    text-align: center;
+    position: absolute;
+    bottom: -0.1rem;
     width: 27%;
   }
 
   .containerDiv {
-    padding: 3.5rem 3rem 18rem 3rem;
+    padding-bottom: 4.2%;
   }
 
   .accessGameImg {
@@ -368,14 +272,8 @@ footer {
 
   .network-window {
     left: 30px;
-    top: auto;
     bottom: 120px;
-    transform: none;
     width: 180px;
-    padding: 1.2rem;
-  }
-
-  .network-title {
     font-size: 1rem;
   }
 

@@ -505,7 +505,7 @@ function AppKitProvider({ mode, setMode }) {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          bgcolor: 'background.default',
+          bgcolor: 'transparent',
           color: 'text.primary',
           p: 3,
           minHeight: '90.9vh',
@@ -522,7 +522,7 @@ return (
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        bgcolor: 'background.default',
+        bgcolor: 'transparent',
         color: 'text.primary',
         p: 3,
         minHeight: '100vh',
@@ -610,6 +610,15 @@ export default function App() {
     palette: { mode },
     transitions: { duration: { standard: 300 } },
   });
+
+  // Set body background based on mode
+  useEffect(() => {
+    if (mode === 'dark') {
+      document.body.style.background = 'linear-gradient(135deg, #2c3e50 0%, #4a5568 100%)';
+    } else {
+      document.body.style.background = 'linear-gradient(135deg, #7bacaaff 0%, #fcc3d5 100%)';
+    }
+  }, [mode]);
 
   return (
     <ThemeProvider theme={theme}>
