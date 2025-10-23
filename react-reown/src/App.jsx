@@ -591,7 +591,7 @@ return (
           If you have {chain?.id === 11155111 || chain?.id === 534351 ? 'Sepolia ETH' : chain?.id === 10143 ? 'Testnet MON' : 'Testnet FLOW'} that you don't need, please donate to this address
         </p>
         <p>{chain?.id === 534351 ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : chain?.id === 11155111 ? '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57' : chain?.id === 10143 ? '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7' : '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7'}</p>
-        <b><p className="app-textEligible">Donations above {chain?.id === 10143 ? '200 MON' : chain?.id === 11155111 || chain?.id === 534351 ? '200 SETH' : '1,000,000 FLOW'} will be eligible for advertisement!!</p></b>
+        <b><p className="app-textEligible">Donations above {chain?.id === 10143 ? '200 MON' : chain?.id === 11155111 || chain?.id === 534351 ? '200 SETH' : '10,000,000 FLOW'} will be eligible for advertisement!!</p></b>
         <i><p className="disclaimer">No gambling or NSFW advertisements allowed</p></i>
       </div>
       <img className="app-sepImg" src="/sepoliaSuit1.png" useMap="#image-map" alt="Sepolia Cats Mascot" />
