@@ -613,10 +613,20 @@ export default function App() {
 
   // Set body background based on mode
   useEffect(() => {
+    const button = document.querySelector('.app-button');
+    
     if (mode === 'dark') {
       document.body.style.background = 'linear-gradient(135deg, #2c3e50 0%, #4a5568 100%)';
+      if (button) {
+        button.style.backgroundColor = '#90caf9';
+        button.style.color = '#000';
+      }
     } else {
-      document.body.style.background = 'linear-gradient(135deg, #7bacaaff 0%, #fcc3d5 100%)';
+      document.body.style.background = 'linear-gradient(135deg, #83b9b7 0%, #fcc3d5 100%)';
+      if (button) {
+        button.style.backgroundColor = '#1976d2';
+        button.style.color = 'white';
+      }
     }
   }, [mode]);
 
