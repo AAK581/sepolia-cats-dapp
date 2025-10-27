@@ -2,11 +2,12 @@
 pragma solidity ^0.8.13;
 
 /// @title The Faucet Manager
-/// @author Adham Ahmed Kamel 
+/// @author AAK581 
 /// @notice This contract manages the faucet
 /// @dev This is where you can change the number of kittens required to collect, the import is to use the OnlyOwner modifier
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "./MilestoneNFT.sol";
 
 contract GameContract is Ownable {
     /// @notice The address of the game for gas
@@ -30,13 +31,21 @@ contract GameContract is Ownable {
     /// @notice A mapping of the addresses of the users as well as the rewards they've claimed during the day
     /// @dev This helps make sure that the user can only claim 4 rewards a day at most
     mapping(address => uint256) public dailyRewards;
+    /// @notice Tracks total kittens ever collected by a user, never resets
+    /// @dev Used to trigger NFT mint at 300 kittens
+    mapping(address => uint256) public lifetimeKittens;
+    /// @notice The NFT contract that mints milestone rewards
+    /// @dev Set once by owner after NFT deployment
+    MilestoneNFT public milestoneNFT;
     /// @notice The number of kittens required to collect
     /// @dev Please use this variable instead of hardcoding it, same goes for REWARD
     uint256 public constant KITTENS_REQUIRED = 15;
     /// @notice The amount given by the faucet upon collecting the required number of kittens
-    uint256 public REWARD = 10.0 ether;
+    uint256 public REWARD = 20.0 ether;
     /// @notice The total number of kittens collected everywhere
     uint256 public totalKittens;
+    /// @notice Number of kittens needed to mint the milestone NFT
+    uint256 public constant MILESTONE_KITTENS = 300;
 
     /// @notice An event that records how many kittens the user has
     /// @dev This is used each time the setKittens function is invoked
@@ -47,6 +56,12 @@ contract GameContract is Ownable {
     /// @notice An event that records the donations done by users
     /// @dev This is used each time the receive function is used
     event DonationReceived(address indexed user, uint256 amount);
+    /// @notice Emitted when a player reaches 300 lifetime kittens
+    /// @dev This happens during SetKittens
+    event MilestoneReached(address indexed user, uint256 lifetime);
+    /// @notice Emitted when the NFT is successfully minted
+    /// @dev This is used in SetKittens
+    event NFTMinted(address indexed user, uint256 tokenId);
 
     /// @notice A function that supplies ETH to the contract, Sepolia in this case
     /// @dev Use this if the faucet runs out of ETH
@@ -70,6 +85,21 @@ contract GameContract is Ownable {
         require(newKittenCount <= 60, "Total kittens cannot exceed 60");
         userKittens[userAddress] = newKittenCount;
         totalKittens = totalKittens - oldKittenCount + newKittenCount;
+
+        uint256 oldLifetime = lifetimeKittens[userAddress];
+        lifetimeKittens[userAddress] = oldLifetime + _value;
+
+        if (lifetimeKittens[userAddress] >= MILESTONE_KITTENS && oldLifetime < MILESTONE_KITTENS)
+        {
+            emit MilestoneReached(userAddress, lifetimeKittens[userAddress]);
+
+            try milestoneNFT.mint(userAddress) returns (uint256 tokenId) {
+                emit NFTMinted(userAddress, tokenId);
+            }
+            catch {
+                //Fail silently
+            }
+        }
         emit KittensUpdated(userAddress, newKittenCount);
     }
 
@@ -85,8 +115,16 @@ contract GameContract is Ownable {
         return userKittens[msg.sender];
     }
 
+    /// @notice Returns the total number of kittens collected by all users
+    /// @dev Use this as much as you need
     function getTotalKittens() public view returns(uint256) {
         return totalKittens;
+    }
+
+    /// @notice Returns total kittens ever collected by a user
+    /// @dev Use this as much as you need
+    function getLifetimeKittens(address user) public view returns(uint256) {
+        return lifetimeKittens[user];
     }
 
 
@@ -130,6 +168,13 @@ contract GameContract is Ownable {
     function setGameAddress(address _gameAddress) external onlyOwner {
         require(_gameAddress != address(0), "Invalid address");
         gameAddress = _gameAddress;
+    }
+
+    /// @notice Links the milestone NFT contract
+    /// @dev Must be called once after NFT deployment
+    function setMilestoneNFT(address _nft) external onlyOwner {
+        require(_nft != address(0), "Invalid NFT address");
+        milestoneNFT = MilestoneNFT(_nft);
     }
 
     /// @notice Withdraws the funds of the contract to facilitate updating

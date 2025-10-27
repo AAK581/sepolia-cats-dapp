@@ -49,7 +49,10 @@ const contractAddresses = {
   534351: '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3',
   11155111: '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57',
   10143: '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7',
-  545: '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7'
+  545: '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3'
+};
+const nftAddresses = {
+  545: "0xfdC0Eb9fAb1395b7584dDb996fEACE0b9d38dE61"
 };
 
 const contractAbi = [
@@ -574,6 +577,12 @@ return (
           <>
             <p className="app-text">Wallet: {address?.slice(0, 6)}...{address?.slice(-4)}</p>
             <p className="app-text">On-Chain Kittens: {isLoading ? 'Loading...' : kittenCount ? Number(kittenCount) : '0'}</p>
+            {chain?.id === 545 && (
+              <p className="app-text">
+                Lifetime Kittens: {lifetime || 0} / 300
+                {lifetime >= 300 && " NFT Minted!"}
+              </p>
+            )}
             <p className="app-text">
               Total Kittens Collected By Players: {isLoading1 ? 'Loading...' : !totalKittens ? 0 : Number(totalKittens)}
             </p>
@@ -598,7 +607,7 @@ return (
       <footer className="footerName">Made by AAK581</footer>
       <footer className="footerLinks">
         <a href="https://www.linkedin.com/in/adham-ahmed-3849b324b/" target="_blank" rel="noopener noreferrer">LinkedIn</a> - 
-        <a href="https://github.com/AAK581" target="_blank" rel="noopener noreferrer"> Github</a>
+        <a href="https://github.com/AAK581/sepolia-cats-dapp" target="_blank" rel="noopener noreferrer"> Github</a>
       </footer>
     </Box>
   );

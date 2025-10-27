@@ -1,0 +1,10 @@
+{
+  "name": "Flow Cats 300-Kitten Milestone #1",
+  "description": "Awarded for collecting 300 kittens on Flow Testnet. This NFT proves your mastery of the Flow Cats game on Flow.",
+  "image": "https://gray-improved-whitefish-326.mypinata.cloud/ipfs/bafkreibntwxyd2ygnng5ucmkvgms3uleubfu5nate5du3y22ij6afby2ia",
+  "attributes": [
+    { "trait_type": "Achievement", "value": "300 Kittens" },
+    { "trait_type": "Network", "value": "Flow Testnet" },
+    { "trait_type": "Rarity", "value": "Legendary" }
+  ]
+}
