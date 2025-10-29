@@ -386,6 +386,13 @@ const contractAbi = [
     ]
   },
   {
+    "inputs": [{ "name": "user", "type": "address" }],
+    "name": "getLifetimeKittens",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "type": "error",
     "name": "OwnableUnauthorizedAccount",
     "inputs": [
@@ -488,6 +495,32 @@ function AppKitProvider({ mode, setMode }) {
     refetchInterval: 10000,
   });
 
+  // Check NFT minted
+  const { data: nftBalance } = useReadContract({
+    address: nftAddresses[chain?.id],
+    abi: [
+      {
+        name: 'balanceOf',
+        type: 'function',
+        inputs: [{ name: 'owner', type: 'address' }],
+        outputs: [{ name: '', type: 'uint256' }],
+        stateMutability: 'view',
+      },
+    ],
+    functionName: 'balanceOf',
+    args: [address],
+    enabled: !!address && chain?.id === 545,
+  });
+
+  // Get lifetime kittens from contract
+  const { data: lifetime } = useReadContract({
+    address: contractAddress,
+    abi: contractAbi,
+    functionName: 'getLifetimeKittens',
+    args: [address],
+    enabled: !!address && chain?.id === 545,
+  });
+
   // Claim rewards from the contract
   const { writeContract, isPending, error: writeError } = useWriteContract();
 
@@ -579,8 +612,9 @@ return (
             <p className="app-text">On-Chain Kittens: {isLoading ? 'Loading...' : kittenCount ? Number(kittenCount) : '0'}</p>
             {chain?.id === 545 && (
               <p className="app-text">
-                Lifetime Kittens: {lifetime || 0} / 300
-                {lifetime >= 300 && " NFT Minted!"}
+                Lifetime Kittens: {lifetime ? Number(lifetime) : 0} / 300 for NFT Eligibility
+                {lifetime && Number(lifetime) >= 300 && " Milestone Reached!"}
+                {nftBalance && Number(nftBalance) > 0 && " NFT Minted!"}
               </p>
             )}
             <p className="app-text">
