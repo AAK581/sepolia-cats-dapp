@@ -82,13 +82,13 @@ html, body {
 .app-sepImg {
   text-align: center;
   position: absolute;
-  bottom: 0rem;
-  width: 15%;
+  bottom: 2rem;
+  width: 11%;
 }
 
 footer {
   position: absolute;
-  bottom: 0;
+  bottom: 30px;
 }
 
 .footerName {
@@ -105,7 +105,7 @@ footer {
   width: 4%;
   position: absolute;
   top: 5%;
-  left: 4%;
+  left: -7%;
   transform: scale(1);
   transition: transform 0.3s;
 }
@@ -118,7 +118,7 @@ footer {
   display: inline;
   position: absolute;
   top: 14%;
-  left: 1%;
+  left: -10%;
 }
 
 .containerDiv {
@@ -161,7 +161,7 @@ footer {
 
 .network-window {
   position: absolute;
-  left: 20px;
+  left: -10.2%;
   bottom: 300px;
   width: 150px;
   background-color: rgba(255, 255, 255, 0.2);
@@ -192,52 +192,132 @@ a {
   color: #5c63eb
 }
 
+/* === NFT CARD: DYNAMIC LIGHT/DARK MODE === */
 .nft-card {
+  position: absolute;
+  top: 125px;
+  right: -100px;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   padding: 1rem;
-  margin: 1rem auto;
-  max-width: 280px;
+  max-width: 260px;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 1000;
+  animation: fadeIn 0.4s ease-out;
+  font-family: inherit;
+}
+
+/* LIGHT MODE: Dark text + dark links */
+[data-mui-color-scheme="light"] .nft-card {
+  color: #1a1a1a;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-mui-color-scheme="light"] .nft-name {
+  color: #1a1a1a;
+  font-weight: bold;
+}
+
+[data-mui-color-scheme="light"] .nft-link,
+[data-mui-color-scheme="light"] .copy-btn {
+  color: #6ca1dd;
+  text-decoration: underline;
+}
+
+[data-mui-color-scheme="light"] .copy-btn {
+  background: rgba(21, 101, 192, 0.15);
+  border: 1px solid #1565c0;
+  color: #1565c0;
+}
+
+[data-mui-color-scheme="light"] .copy-btn:hover {
+  background: rgba(21, 101, 192, 0.25);
+}
+
+/* DARK MODE: White text + light links */
+[data-mui-color-scheme="dark"] .nft-card {
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-mui-color-scheme="dark"] .nft-name {
+  color: #fff;
+}
+
+[data-mui-color-scheme="dark"] .nft-link,
+[data-mui-color-scheme="dark"] .copy-btn {
+  color: #90caf9;
+}
+
+[data-mui-color-scheme="dark"] .copy-btn {
+  background: rgba(144, 202, 249, 0.2);
+  border: 1px solid #90caf9;
+  color: #90caf9;
+}
+
+[data-mui-color-scheme="dark"] .copy-btn:hover {
+  background: rgba(144, 202, 249, 0.3);
 }
 
 .nft-image {
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   border-radius: 12px;
   object-fit: cover;
-  border: 3px solid #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  border: 3px solid;
+  border-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-mui-color-scheme="light"] .nft-image {
+  border-color: #000;
 }
 
 .nft-name {
   margin: 0.75rem 0 0.5rem;
-  font-weight: bold;
-  color: #fff;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .nft-link, .copy-btn {
   display: block;
   margin: 0.5rem 0;
-  color: #90caf9;
-  text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+.nft-link {
+  font-weight: 600;
 }
 
 .copy-btn {
-  background: rgba(144, 202, 249, 0.2);
-  border: 1px solid #90caf9;
-  color: #90caf9;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
+  font-size: 0.8rem;
 }
 
-.copy-btn:hover {
-  background: rgba(144, 202, 249, 0.3);
+/* === LOADING SKELETON === */
+.skeleton {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 12px;
+  border: 3px solid #fff;
+}
+
+[data-mui-color-scheme="light"] .skeleton {
+  border-color: #000;
+  background: linear-gradient(90deg, #e0e0e0 25%, #d0d0d0 50%, #e0e0e0 75%);
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 @media only screen and (max-width: 600px) {
@@ -286,6 +366,17 @@ a {
 
   .network-list li {
     font-size: 0.7rem;
+  }
+
+    .nft-card {
+    top: 10px;
+    right: 10px;
+    padding: 0.8rem;
+    max-width: 200px;
+  }
+  .nft-image {
+    width: 90px;
+    height: 90px;
   }
 }
 

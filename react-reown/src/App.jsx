@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { useMemo, memo } from 'react';
 import './App.css';
 
 // Setup queryClient
@@ -52,7 +53,7 @@ const contractAddresses = {
   545: '0x3D2b376F8aAB61bF5fF14906ddC3c56C69b47A3d'
 };
 const nftAddresses = {
-  545: "0xfdC0Eb9fAb1395b7584dDb996fEACE0b9d38dE61"
+  545: "0x3CA2484486f754AC3d67126A5a5f5078e40caB45"
 };
 
 const contractAbi = [
@@ -405,6 +406,63 @@ const contractAbi = [
   }
 ];
 
+// NFT logic
+const NFTCard = memo(({ address, tokenId = 1 }) => {
+  const metadataUrl = `https://gray-improved-whitefish-326.mypinata.cloud/ipfs/bafybeifzsqfm6emnz4pcow62oalmcajyv3e3biz7iro5ljtizm2f3rfzza/${tokenId}.json`;
+  const flowscanUrl = `https://evm-testnet.flowscan.io/token/0x3CA2484486f754AC3d67126A5a5f5078e40caB45?a=${address}`;
+
+  const [nftData, setNftData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(metadataUrl)
+      .then(res => res.json())
+      .then(data => {
+        setNftData(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }, [metadataUrl]);
+
+  if (loading) {
+    return (
+      <div className="nft-card">
+        <div className="nft-image skeleton"></div>
+        <p className="nft-name">Loading NFT...</p>
+      </div>
+    );
+  }
+
+  if (!nftData) {
+    return (
+      <div className="nft-card">
+        <p className="nft-name">Failed to load NFT</p>
+      </div>
+    );
+  }
+
+  const imageUrl = nftData.image?.startsWith('ipfs://')
+    ? `https://gray-improved-whitefish-326.mypinata.cloud/ipfs/${nftData.image.replace('ipfs://', '')}`
+    : nftData.image;
+
+  return (
+    <div className="nft-card">
+      <a href={flowscanUrl} target="_blank" rel="noopener noreferrer" className="nft-link"><img
+        src={imageUrl}
+        alt={nftData.name || "NFT"}
+        className="nft-image"
+        onError={(e) => { e.target.src = '/fallback-nft.png'; }}
+      /></a>
+      <p className="nft-name">{nftData.name || `Milestone #${tokenId}`}</p>
+      <a href={flowscanUrl} target="_blank" rel="noopener noreferrer" className="nft-link">
+        View on Flowscan
+      </a>
+    </div>
+  );
+});
+
 // Styled Switch
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -533,6 +591,8 @@ function AppKitProvider({ mode, setMode }) {
     });
   };
 
+
+
   // Show loading state until connection state is resolved
   if (isConnecting) {
     return (
@@ -555,6 +615,7 @@ function AppKitProvider({ mode, setMode }) {
 return (
     <Box
       sx={{
+        position: 'relative',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -611,41 +672,24 @@ return (
             <p className="app-text">Wallet: {address?.slice(0, 6)}...{address?.slice(-4)}</p>
             <p className="app-text">On-Chain Kittens: {isLoading ? 'Loading...' : kittenCount ? Number(kittenCount) : '0'}</p>
             {chain?.id === 545 && (
-              <p className="app-text">
-                Lifetime Kittens: {lifetime ? Number(lifetime) : 0} / 20 for NFT Eligibility
-                {lifetime && Number(lifetime) >= 20 && " Milestone Reached!"}
-                {nftBalance && Number(nftBalance) > 0 && " NFT Minted!"}
-              </p>
-              {Number(nftBalance) > 0 && (
-                <div className="nft-card">
-                  <img
-                    src={`https://gray-improved-whitefish-326.mypinata.cloud/ipfs/bafybeifzsqfm6emnz4pcow62oalmcajyv3e3biz7iro5ljtizm2f3rfzza/1.png`}
-                    alt="Milestone NFT"
-                    className="nft-image"
-                    onError={(e) => {
-                      e.target.src = '/fallback-nft.png'; // optional
-                    }}
-                  />
-                  <p className="nft-name">Flow Cats Milestone #1</p>
-                  <a
-                    href={`https://evm-testnet.flowscan.io/token/0x${YOUR_NEW_NFT_ADDRESS}?a=${address}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="nft-link"
-                  >
-                    View on Flowscan
-                  </a>
-                  <button
-                    onClick={() => {
-                      navigator.clipboard.writeText(`https://evm-testnet.flowscan.io/token/0x${YOUR_NEW_NFT_ADDRESS}?a=${address}`);
-                      alert("Link copied! Paste in wallet if needed.");
-                    }}
-                    className="copy-btn"
-                  >
-                    Copy Link
-                  </button>
-                </div>
-              )}
+              <>
+                <p className="app-text">
+                  Lifetime Kittens: {lifetime ? Number(lifetime) : 0} / 20 for NFT Eligibility
+                </p>
+
+                {lifetime && Number(lifetime) >= 20 && (
+                  <p className="app-text milestone-text">Milestone Reached!</p>
+                )}
+
+                {nftBalance && Number(nftBalance) > 0 && (
+                  <p className="app-text milestone-text">NFT Minted!</p>
+                )}
+
+                {/* NFT Card */}
+                {nftBalance && Number(nftBalance) > 0 && address && (
+                  <NFTCard key={address} address={address} tokenId={1} />
+                )}
+              </>
             )}
             <p className="app-text">
               Total Kittens Collected By Players: {isLoading1 ? 'Loading...' : !totalKittens ? 0 : Number(totalKittens)}
@@ -663,7 +707,8 @@ return (
         <p className="app-textRequest">
           If you have {chain?.id === 11155111 || chain?.id === 534351 ? 'Sepolia ETH' : chain?.id === 10143 ? 'Testnet MON' : 'Testnet FLOW'} that you don't need, please donate to this address
         </p>
-        <p>{chain?.id === 534351 ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : chain?.id === 11155111 ? '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57' : chain?.id === 10143 ? '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7' : '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3'}</p>
+        {/* Contract with 300 kittens milestone is 0x3D2b376F8aAB61bF5fF14906ddC3c56C69b47A3d */}
+        <p>{chain?.id === 534351 ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : chain?.id === 11155111 ? '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57' : chain?.id === 10143 ? '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7' : '0x3D2b376F8aAB61bF5fF14906ddC3c56C69b47A3d'}</p>
         <b><p className="app-textEligible">Donations above {chain?.id === 10143 ? '200 MON' : chain?.id === 11155111 || chain?.id === 534351 ? '200 SETH' : '10,000,000 FLOW'} will be eligible for advertisement!!</p></b>
         <i><p className="disclaimer">No gambling or NSFW advertisements allowed</p></i>
       </div>
@@ -684,15 +729,14 @@ export default function App() {
     transitions: { duration: { standard: 300 } },
   });
 
-  // Set body background based on mode
   useEffect(() => {
     const button = document.querySelector('.app-button');
     
     if (mode === 'dark') {
       document.body.style.background = 'linear-gradient(135deg, #2c3e50 0%, #4a5568 100%)';
       if (button) {
-        button.style.backgroundColor = '#90caf9';
-        button.style.color = '#000';
+        button.style.backgroundColor = '#1976d2';
+        button.style.color = 'white';
       }
     } else {
       document.body.style.background = 'linear-gradient(135deg, #83b9b7 0%, #fcc3d5 100%)';
