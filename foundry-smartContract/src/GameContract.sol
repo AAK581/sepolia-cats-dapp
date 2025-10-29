@@ -45,7 +45,7 @@ contract GameContract is Ownable {
     /// @notice The total number of kittens collected everywhere
     uint256 public totalKittens;
     /// @notice Number of kittens needed to mint the milestone NFT
-    uint256 public constant MILESTONE_KITTENS = 300;
+    uint256 public constant MILESTONE_KITTENS = 20;
 
     /// @notice An event that records how many kittens the user has
     /// @dev This is used each time the setKittens function is invoked
