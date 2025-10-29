@@ -9,13 +9,16 @@ contract DeployNFT is Script {
         uint256 pk = vm.envUint("PK");
         vm.startBroadcast(pk);
 
+        string memory baseURI = "https://gray-improved-whitefish-326.mypinata.cloud/ipfs/bafybeifzsqfm6emnz4pcow62oalmcajyv3e3biz7iro5ljtizm2f3rfzza/";
+
         MilestoneNFT nft = new MilestoneNFT(
             "Flow Cats Milestone",
             "FCM",
-            "https://gray-improved-whitefish-326.mypinata.cloud/ipfs/bafkreihvvoruwp2hfaunndote5nh2umohdf77ucps2wqka7ikaxcg7lvre"
+            baseURI
         );
 
         console.log("NFT DEPLOYED TO:", address(nft));
+        console.log("BASE URI SET TO:", baseURI);
 
         vm.stopBroadcast();
     }

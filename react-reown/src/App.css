@@ -192,6 +192,54 @@ a {
   color: #5c63eb
 }
 
+.nft-card {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 1rem;
+  margin: 1rem auto;
+  max-width: 280px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.nft-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.nft-name {
+  margin: 0.75rem 0 0.5rem;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.nft-link, .copy-btn {
+  display: block;
+  margin: 0.5rem 0;
+  color: #90caf9;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.copy-btn {
+  background: rgba(144, 202, 249, 0.2);
+  border: 1px solid #90caf9;
+  color: #90caf9;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.copy-btn:hover {
+  background: rgba(144, 202, 249, 0.3);
+}
+
 @media only screen and (max-width: 600px) {
   .pPlay {
     font-size: 0.6rem;

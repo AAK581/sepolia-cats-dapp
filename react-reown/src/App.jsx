@@ -612,10 +612,40 @@ return (
             <p className="app-text">On-Chain Kittens: {isLoading ? 'Loading...' : kittenCount ? Number(kittenCount) : '0'}</p>
             {chain?.id === 545 && (
               <p className="app-text">
-                Lifetime Kittens: {lifetime ? Number(lifetime) : 0} / 300 for NFT Eligibility
-                {lifetime && Number(lifetime) >= 300 && " Milestone Reached!"}
+                Lifetime Kittens: {lifetime ? Number(lifetime) : 0} / 20 for NFT Eligibility
+                {lifetime && Number(lifetime) >= 20 && " Milestone Reached!"}
                 {nftBalance && Number(nftBalance) > 0 && " NFT Minted!"}
               </p>
+              {Number(nftBalance) > 0 && (
+                <div className="nft-card">
+                  <img
+                    src={`https://gray-improved-whitefish-326.mypinata.cloud/ipfs/bafybeifzsqfm6emnz4pcow62oalmcajyv3e3biz7iro5ljtizm2f3rfzza/1.png`}
+                    alt="Milestone NFT"
+                    className="nft-image"
+                    onError={(e) => {
+                      e.target.src = '/fallback-nft.png'; // optional
+                    }}
+                  />
+                  <p className="nft-name">Flow Cats Milestone #1</p>
+                  <a
+                    href={`https://evm-testnet.flowscan.io/token/0x${YOUR_NEW_NFT_ADDRESS}?a=${address}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="nft-link"
+                  >
+                    View on Flowscan
+                  </a>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(`https://evm-testnet.flowscan.io/token/0x${YOUR_NEW_NFT_ADDRESS}?a=${address}`);
+                      alert("Link copied! Paste in wallet if needed.");
+                    }}
+                    className="copy-btn"
+                  >
+                    Copy Link
+                  </button>
+                </div>
+              )}
             )}
             <p className="app-text">
               Total Kittens Collected By Players: {isLoading1 ? 'Loading...' : !totalKittens ? 0 : Number(totalKittens)}
