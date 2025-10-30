@@ -19,7 +19,6 @@ contract MilestoneNFT is ERC721URIStorage, Ownable {
     function mint(address to) external onlyOwner returns (uint256) {
         _tokenId++;
         _safeMint(to, _tokenId);
-        _setTokenURI(_tokenId, string(abi.encodePacked(_baseTokenURI, uint2str(_tokenId), ".json")));
         return _tokenId;
     }
 
@@ -36,5 +35,10 @@ contract MilestoneNFT is ERC721URIStorage, Ownable {
 
     function setBaseURI(string calldata newURI) external onlyOwner {
         _baseTokenURI = newURI;
+    }
+
+    function tokenURI(uint256 tokenId) public view override(ERC721URIStorage) returns (string memory) {
+        require(_ownerOf(tokenId) != address(0), "Token does not exist");
+        return string(abi.encodePacked(_baseTokenURI, "1.json"));
     }
 }

@@ -50,10 +50,10 @@ const contractAddresses = {
   534351: '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3',
   11155111: '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57',
   10143: '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7',
-  545: '0x3D2b376F8aAB61bF5fF14906ddC3c56C69b47A3d'
+  545: '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57'
 };
 const nftAddresses = {
-  545: "0x3CA2484486f754AC3d67126A5a5f5078e40caB45"
+  545: "0x02CAee48CA3fa282Df07954375d85CB1998E031C"
 };
 
 const contractAbi = [
@@ -708,7 +708,7 @@ return (
           If you have {chain?.id === 11155111 || chain?.id === 534351 ? 'Sepolia ETH' : chain?.id === 10143 ? 'Testnet MON' : 'Testnet FLOW'} that you don't need, please donate to this address
         </p>
         {/* Contract with 300 kittens milestone is 0x3D2b376F8aAB61bF5fF14906ddC3c56C69b47A3d */}
-        <p>{chain?.id === 534351 ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : chain?.id === 11155111 ? '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57' : chain?.id === 10143 ? '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7' : '0x3D2b376F8aAB61bF5fF14906ddC3c56C69b47A3d'}</p>
+        <p>{chain?.id === 534351 ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : chain?.id === 11155111 ? '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57' : chain?.id === 10143 ? '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7' : '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57'}</p>
         <b><p className="app-textEligible">Donations above {chain?.id === 10143 ? '200 MON' : chain?.id === 11155111 || chain?.id === 534351 ? '200 SETH' : '10,000,000 FLOW'} will be eligible for advertisement!!</p></b>
         <i><p className="disclaimer">No gambling or NSFW advertisements allowed</p></i>
       </div>
