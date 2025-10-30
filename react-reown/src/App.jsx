@@ -489,6 +489,8 @@ const NFTCard = memo(({ address }) => {
     ? `https://gray-improved-whitefish-326.mypinata.cloud/ipfs/${nftData.image.replace('ipfs://', '')}`
     : nftData.image;
 
+  console.log(flowscanUrl);
+
   return (
     <div className="nft-card">
       <a href={flowscanUrl} target="_blank" rel="noopener noreferrer" className="nft-link">
