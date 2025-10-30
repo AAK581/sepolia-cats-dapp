@@ -10,6 +10,7 @@ import { styled } from '@mui/material/styles';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useMemo, memo } from 'react';
+import { usePublicClient } from 'wagmi';
 import './App.css';
 
 // Setup queryClient
@@ -50,10 +51,10 @@ const contractAddresses = {
   534351: '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3',
   11155111: '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57',
   10143: '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7',
-  545: '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57'
+  545: '0x3D2b376F8aAB61bF5fF14906ddC3c56C69b47A3d'
 };
 const nftAddresses = {
-  545: "0x02CAee48CA3fa282Df07954375d85CB1998E031C"
+  545: "0x3CA2484486f754AC3d67126A5a5f5078e40caB45"
 };
 
 const contractAbi = [
@@ -407,26 +408,67 @@ const contractAbi = [
 ];
 
 // NFT logic
-const NFTCard = memo(({ address, tokenId = 1 }) => {
-  const metadataUrl = `https://gray-improved-whitefish-326.mypinata.cloud/ipfs/bafybeifzsqfm6emnz4pcow62oalmcajyv3e3biz7iro5ljtizm2f3rfzza/${tokenId}.json`;
-  const flowscanUrl = `https://evm-testnet.flowscan.io/token/0x3CA2484486f754AC3d67126A5a5f5078e40caB45?a=${address}`;
+const NFTCard = memo(({ address }) => {
+  const publicClient = usePublicClient();
+  const nftContract = nftAddresses[545];
+  const baseURI = "https://gray-improved-whitefish-326.mypinata.cloud/ipfs/bafybeifzsqfm6emnz4pcow62oalmcajyv3e3biz7iro5ljtizm2f3rfzza/";
 
+  const [tokenId, setTokenId] = useState(null);
   const [nftData, setNftData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [searching, setSearching] = useState(true);
 
   useEffect(() => {
-    fetch(metadataUrl)
+    if (!address || !publicClient) {
+      setSearching(false);
+      return;
+    }
+
+    setSearching(true);
+    (async () => {
+      for (let id = 1; id <= 1000; id++) {
+        try {
+          const owner = await publicClient.readContract({
+            address: nftContract,
+            abi: [{ name: "ownerOf", inputs: [{ type: "uint256" }], outputs: [{ type: "address" }], stateMutability: "view" }],
+            functionName: "ownerOf",
+            args: [id],
+          });
+          if (owner.toLowerCase() === address.toLowerCase()) {
+            setTokenId(id);
+            break;
+          }
+        } catch (e) { continue; }
+      }
+      setSearching(false);
+    })();
+  }, [address, publicClient]);
+
+  useEffect(() => {
+    if (!tokenId) return;
+    fetch(`${baseURI}1.json`)
       .then(res => res.json())
       .then(data => {
         setNftData(data);
         setLoading(false);
       })
-      .catch(() => {
-        setLoading(false);
-      });
-  }, [metadataUrl]);
+      .catch(() => setLoading(false));
+  }, [tokenId]);
 
-  if (loading) {
+  const flowscanUrl = tokenId
+    ? `https://evm-testnet.flowscan.io/token/${nftContract}/instance/${tokenId}`
+    : `https://evm-testnet.flowscan.io/token/${nftContract}`;
+
+  if (searching || loading || !tokenId) {
+    return (
+      <div className="nft-card">
+        <div className="nft-image skeleton"></div>
+        <p className="nft-name">Loading NFT...</p>
+      </div>
+    );
+  }
+
+  if (loading || !tokenId) {
     return (
       <div className="nft-card">
         <div className="nft-image skeleton"></div>
@@ -449,13 +491,10 @@ const NFTCard = memo(({ address, tokenId = 1 }) => {
 
   return (
     <div className="nft-card">
-      <a href={flowscanUrl} target="_blank" rel="noopener noreferrer" className="nft-link"><img
-        src={imageUrl}
-        alt={nftData.name || "NFT"}
-        className="nft-image"
-        onError={(e) => { e.target.src = '/fallback-nft.png'; }}
-      /></a>
-      <p className="nft-name">{nftData.name || `Milestone #${tokenId}`}</p>
+      <a href={flowscanUrl} target="_blank" rel="noopener noreferrer" className="nft-link">
+        <img src={imageUrl} alt={nftData.name} className="nft-image" />
+      </a>
+      <p className="nft-name">{nftData.name}</p>
       <a href={flowscanUrl} target="_blank" rel="noopener noreferrer" className="nft-link">
         View on Flowscan
       </a>
@@ -650,7 +689,7 @@ return (
           }),
       ]}>
         <h1 className="app-title">
-          {chain?.id === 11155111 ? 'Sepolia Cats dApp' : chain?.id === 534351 ? 'Sepolia Cats dApp' : chain?.id === 10143 ? 'Monad Cats dApp' : 'Flow Cats dApp'}
+          {chain?.id === 11155111 ? 'Sepolia Cats dApp' : chain?.id === 534351 ? 'Sepolia Cats dApp' : chain?.id === 10143 ? 'Monad Cats dApp' : 'FLOW Cats dApp'}
         </h1>
         <FormGroup>
           <FormControlLabel
@@ -687,14 +726,14 @@ return (
 
                 {/* NFT Card */}
                 {nftBalance && Number(nftBalance) > 0 && address && (
-                  <NFTCard key={address} address={address} tokenId={1} />
+                  <NFTCard key={address} address={address} />
                 )}
               </>
             )}
             <p className="app-text">
               Total Kittens Collected By Players: {isLoading1 ? 'Loading...' : !totalKittens ? 0 : Number(totalKittens)}
             </p>
-            <p className="app-text">Current reward: {isLoading2 ? 'Loading...' : !REWARD ? (chain?.id === 10143 ? "0.025 MON" : chain?.id === 11155111 || chain?.id === 534351 ? "0.015 ETH" : "10 FLOW") : `${Number(REWARD) / 1000000000000000000} ${chain?.id === 10143 ? 'MON' : chain?.id === 11155111 || chain?.id === 534351 ? 'ETH' : 'FLOW'}`}</p>
+            <p className="app-text">Current reward: {isLoading2 ? 'Loading...' : !REWARD ? (chain?.id === 10143 ? "0.025 MON" : chain?.id === 11155111 || chain?.id === 534351 ? "0.015 ETH" : "20 FLOW") : `${Number(REWARD) / 1000000000000000000} ${chain?.id === 10143 ? 'MON' : chain?.id === 11155111 || chain?.id === 534351 ? 'ETH' : 'FLOW'}`}</p>
             {readError && <p className="app-error">Error: {readError.message}</p>}
             {readError1 && <p className="app-error">Error: {readError1.message}</p>}
             <p className="app-text">Minimum kittens required to claim rewards: 15 kittens</p>
