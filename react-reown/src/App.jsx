@@ -14,6 +14,11 @@ import { usePublicClient } from 'wagmi';
 import { createPublicClient, http } from 'viem';
 import './App.css';
 
+const flowPublicClient = createPublicClient({
+  chain: flowTestnet,
+  transport: http(),
+});
+
 // Setup queryClient
 const queryClient = new QueryClient();
 
@@ -52,11 +57,35 @@ const contractAddresses = {
   534351: '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3',
   11155111: '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57',
   10143: '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7',
-  545: '0x3D2b376F8aAB61bF5fF14906ddC3c56C69b47A3d'
+  545: '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57'
 };
 const nftAddresses = {
-  545: "0x3CA2484486f754AC3d67126A5a5f5078e40caB45"
+  545: "0x02CAee48CA3fa282Df07954375d85CB1998E031C"
 };
+
+const erc721Abi = [
+  {
+    "type": "function",
+    "name": "ownerOf",
+    "inputs": [{ "name": "tokenId", "type": "uint256" }],
+    "outputs": [{ "name": "", "type": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "balanceOf",
+    "inputs": [{ "name": "owner", "type": "address" }],
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "tokenURI",
+    "inputs": [{ "name": "tokenId", "type": "uint256" }],
+    "outputs": [{ "name": "", "type": "string" }],
+    "stateMutability": "view"
+  }
+];
 
 const contractAbi = [
   {
@@ -408,22 +437,19 @@ const contractAbi = [
   }
 ];
 
-// NFT logic
+
+
+
 const NFTCard = memo(({ address }) => {
-  const publicClient = createPublicClient({
-    chain: flowTestnet,
-    transport: http(),
-  });
   const nftContract = nftAddresses[545];
   const baseURI = "https://gray-improved-whitefish-326.mypinata.cloud/ipfs/bafybeifzsqfm6emnz4pcow62oalmcajyv3e3biz7iro5ljtizm2f3rfzza/";
 
   const [tokenId, setTokenId] = useState(null);
   const [nftData, setNftData] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [searching, setSearching] = useState(true);
 
   useEffect(() => {
-    if (!address || !nftContract) {
+    if (!address) {
       setSearching(false);
       return;
     }
@@ -432,9 +458,9 @@ const NFTCard = memo(({ address }) => {
     (async () => {
       for (let id = 1; id <= 10; id++) {
         try {
-          const owner = await publicClient.readContract({
+          const owner = await flowPublicClient.readContract({
             address: nftContract,
-            abi: [{ name: "ownerOf", inputs: [{ type: "uint256" }], outputs: [{ type: "address" }], stateMutability: "view" }],
+            abi: erc721Abi,
             functionName: "ownerOf",
             args: [id],
           });
@@ -445,43 +471,39 @@ const NFTCard = memo(({ address }) => {
             break;
           }
         } catch (e) {
-          console.log(`tokenId ${id} not minted`, e);
+          console.log(`tokenId ${id} not minted: ${e.message}`);
           continue;
         }
       }
       setSearching(false);
     })();
-  }, [address]); // ← ONLY address
+  }, [address]);
 
   useEffect(() => {
     if (!tokenId) return;
     fetch(`${baseURI}1.json`)
       .then(res => res.json())
-      .then(data => {
-        setNftData(data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
+      .then(data => setNftData(data))
+      .catch(() => setNftData(null));
   }, [tokenId]);
 
   const flowscanUrl = tokenId
     ? `https://evm-testnet.flowscan.io/token/${nftContract}/instance/${tokenId}`
     : `https://evm-testnet.flowscan.io/token/${nftContract}`;
 
-  if (searching || loading || !tokenId) {
+  if (searching) {
     return (
       <div className="nft-card">
         <div className="nft-image skeleton"></div>
-        <p className="nft-name">Loading NFT...</p>
+        <p className="nft-name">Searching for NFT...</p>
       </div>
     );
   }
 
-  if (loading || !tokenId) {
+  if (!tokenId) {
     return (
       <div className="nft-card">
-        <div className="nft-image skeleton"></div>
-        <p className="nft-name">Loading NFT...</p>
+        <p className="nft-name">No NFT found</p>
       </div>
     );
   }
@@ -489,7 +511,8 @@ const NFTCard = memo(({ address }) => {
   if (!nftData) {
     return (
       <div className="nft-card">
-        <p className="nft-name">Failed to load NFT</p>
+        <div className="nft-image skeleton"></div>
+        <p className="nft-name">Loading metadata...</p>
       </div>
     );
   }
@@ -497,8 +520,6 @@ const NFTCard = memo(({ address }) => {
   const imageUrl = nftData.image?.startsWith('ipfs://')
     ? `https://gray-improved-whitefish-326.mypinata.cloud/ipfs/${nftData.image.replace('ipfs://', '')}`
     : nftData.image;
-
-  console.log(flowscanUrl);
 
   return (
     <div className="nft-card">
