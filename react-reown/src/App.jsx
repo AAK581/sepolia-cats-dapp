@@ -712,7 +712,12 @@ return (
         <b><p className="app-textEligible">Donations above {chain?.id === 10143 ? '200 MON' : chain?.id === 11155111 || chain?.id === 534351 ? '200 SETH' : '10,000,000 FLOW'} will be eligible for advertisement!!</p></b>
         <i><p className="disclaimer">No gambling or NSFW advertisements allowed</p></i>
       </div>
-      <img className="app-sepImg" src="/sepoliaSuit1.png" useMap="#image-map" alt="Sepolia Cats Mascot" />
+      <img 
+        className={`app-sepImg ${isConnected ? 'connected' : 'disconnected'}`} 
+        src="/sepoliaSuit1.png" 
+        useMap="#image-map" 
+        alt="Sepolia Cats Mascot" 
+      />
       <footer className="footerName">Made by AAK581</footer>
       <footer className="footerLinks">
         <a href="https://www.linkedin.com/in/adham-ahmed-3849b324b/" target="_blank" rel="noopener noreferrer">LinkedIn</a> - 
