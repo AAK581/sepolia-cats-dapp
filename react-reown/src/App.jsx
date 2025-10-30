@@ -11,6 +11,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useMemo, memo } from 'react';
 import { usePublicClient } from 'wagmi';
+import { createPublicClient, http } from 'viem';
 import './App.css';
 
 // Setup queryClient
@@ -409,7 +410,10 @@ const contractAbi = [
 
 // NFT logic
 const NFTCard = memo(({ address }) => {
-  const publicClient = usePublicClient();
+  const publicClient = createPublicClient({
+    chain: flowTestnet,
+    transport: http(),
+  });
   const nftContract = nftAddresses[545];
   const baseURI = "https://gray-improved-whitefish-326.mypinata.cloud/ipfs/bafybeifzsqfm6emnz4pcow62oalmcajyv3e3biz7iro5ljtizm2f3rfzza/";
 
@@ -419,14 +423,14 @@ const NFTCard = memo(({ address }) => {
   const [searching, setSearching] = useState(true);
 
   useEffect(() => {
-    if (!address || !publicClient) {
+    if (!address || !nftContract) {
       setSearching(false);
       return;
     }
 
     setSearching(true);
     (async () => {
-      for (let id = 1; id <= 1000; id++) {
+      for (let id = 1; id <= 10; id++) {
         try {
           const owner = await publicClient.readContract({
             address: nftContract,
@@ -434,16 +438,20 @@ const NFTCard = memo(({ address }) => {
             functionName: "ownerOf",
             args: [id],
           });
+          console.log(`ownerOf(${id}) = ${owner}`);
           if (owner.toLowerCase() === address.toLowerCase()) {
+            console.log(`FOUND: tokenId = ${id}`);
             setTokenId(id);
-            console.log(`TokenID: ${id}`);
             break;
           }
-        } catch (e) { continue; }
+        } catch (e) {
+          console.log(`tokenId ${id} not minted`, e);
+          continue;
+        }
       }
       setSearching(false);
     })();
-  }, [address, publicClient]);
+  }, [address]); // ← ONLY address
 
   useEffect(() => {
     if (!tokenId) return;
