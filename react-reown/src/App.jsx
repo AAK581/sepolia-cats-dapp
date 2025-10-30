@@ -436,6 +436,7 @@ const NFTCard = memo(({ address }) => {
           });
           if (owner.toLowerCase() === address.toLowerCase()) {
             setTokenId(id);
+            console.log(`TokenID: ${id}`);
             break;
           }
         } catch (e) { continue; }
