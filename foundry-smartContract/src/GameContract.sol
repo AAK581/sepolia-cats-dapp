@@ -45,7 +45,7 @@ contract GameContract is Ownable {
     /// @notice The total number of kittens collected everywhere
     uint256 public totalKittens;
     /// @notice Number of kittens needed to mint the milestone NFT
-    uint256 public constant MILESTONE_KITTENS = 20;
+    uint256 public constant MILESTONE_KITTENS = 300;
 
     /// @notice An event that records how many kittens the user has
     /// @dev This is used each time the setKittens function is invoked
@@ -62,6 +62,9 @@ contract GameContract is Ownable {
     /// @notice Emitted when the NFT is successfully minted
     /// @dev This is used in SetKittens
     event NFTMinted(address indexed user, uint256 tokenId);
+    /// @notice Emitted when the NFT fails to mint
+    /// @dev This is used in SetKittens
+    event NFTFailed(address indexed user);
 
     /// @notice A function that supplies ETH to the contract, Sepolia in this case
     /// @dev Use this if the faucet runs out of ETH
@@ -97,7 +100,7 @@ contract GameContract is Ownable {
                 emit NFTMinted(userAddress, tokenId);
             }
             catch {
-                //Fail silently
+                emit NFTFailed(userAddress);
             }
         }
         emit KittensUpdated(userAddress, newKittenCount);

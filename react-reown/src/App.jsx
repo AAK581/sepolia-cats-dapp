@@ -57,10 +57,10 @@ const contractAddresses = {
   534351: '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3',
   11155111: '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57',
   10143: '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7',
-  545: '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57'
+  545: '0x292Fe1de6ce0ca4917fB6163ECb4C00b395D5804'
 };
 const nftAddresses = {
-  545: "0x02CAee48CA3fa282Df07954375d85CB1998E031C"
+  545: "0x335777beD22AdA837E46D28AE83ba697eDD09d62"
 };
 
 const erc721Abi = [
@@ -745,10 +745,10 @@ return (
             {chain?.id === 545 && (
               <>
                 <p className="app-text">
-                  Lifetime Kittens: {lifetime ? Number(lifetime) : 0} / 20 for NFT Eligibility
+                  Lifetime Kittens: {lifetime ? Number(lifetime) : 0} / 300 for NFT Eligibility
                 </p>
 
-                {lifetime && Number(lifetime) >= 20 && (
+                {lifetime && Number(lifetime) >= 300 && (
                   <p className="app-text milestone-text">Milestone Reached!</p>
                 )}
 
@@ -778,8 +778,7 @@ return (
         <p className="app-textRequest">
           If you have {chain?.id === 11155111 || chain?.id === 534351 ? 'Sepolia ETH' : chain?.id === 10143 ? 'Testnet MON' : 'Testnet FLOW'} that you don't need, please donate to this address
         </p>
-        {/* Contract with 300 kittens milestone is 0x3D2b376F8aAB61bF5fF14906ddC3c56C69b47A3d */}
-        <p>{chain?.id === 534351 ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : chain?.id === 11155111 ? '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57' : chain?.id === 10143 ? '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7' : '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57'}</p>
+        <p>{chain?.id === 534351 ? '0xA45a75B3523334bf4017b0BB9D76d4E06661fba3' : chain?.id === 11155111 ? '0xa9C4cd6C657f5110C6966c78962D47c24D27BD57' : chain?.id === 10143 ? '0x0968F5BF2EdEEEEf0bdB42C304DB24d5CE90B9D7' : '0x292Fe1de6ce0ca4917fB6163ECb4C00b395D5804'}</p>
         <b><p className="app-textEligible">Donations above {chain?.id === 10143 ? '200 MON' : chain?.id === 11155111 || chain?.id === 534351 ? '200 SETH' : '10,000,000 FLOW'} will be eligible for advertisement!!</p></b>
         <i><p className="disclaimer">No gambling or NSFW advertisements allowed</p></i>
       </div>
