@@ -6,7 +6,7 @@
 # About this project
 
 ## Project Description
-Flow Cats is a gamified testnet FLOW faucet made on the FLOW blockchain.
+Flow Cats is a gamified testnet FLOW faucet made on the testnet FLOW blockchain.
 Users can claim testnet FLOWs by collecting kittens in the game which can be synced online using the Teleporter
 in-game item.
 Upon collecting at least 15 kittens, a user can claim a reward from the dApp, with a maximum of 4 rewards per day.
@@ -55,7 +55,7 @@ as they wouldn't be able to pay for gas. This is solved by the game dripping at 
 https://evm-testnet.flowscan.io/address/0x292Fe1de6ce0ca4917fB6163ECb4C00b395D5804     
 
 ### NFT Contract      
-0x335777beD22AdA837E46D28AE83ba697eDD09d62
+0x335777beD22AdA837E46D28AE83ba697eDD09d62      
 https://evm-testnet.flowscan.io/address/0x335777beD22AdA837E46D28AE83ba697eDD09d62
 
 ## dApp link
